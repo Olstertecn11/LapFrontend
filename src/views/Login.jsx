@@ -1,5 +1,6 @@
 import './styles/Login.css';
 import logoLAP from './../assets/logoLAP.png';
+import { Link } from 'react-router-dom';
 
 
 const Login = () => {
@@ -11,14 +12,17 @@ const Login = () => {
             <img src={logoLAP} alt="Logo" />
           </div>
           <div className="col-md-6 logn-form-column">
-            <div className="card card-body p-4">
+            <div className="card card-body">
               <div className="form-group">
+                <label htmlFor="" className='mx-auto'>Usuario</label>
                 <input type="text" placeholder="olster" className="form-control" />
               </div>
-              <div className="form-group">
+              <div className="form-group mt-2">
+                <label htmlFor="">Contraseña</label>
                 <input type="password" placeholder="*************" className="form-control" />
               </div>
-              <button className='btn btn-success'>Login</button>
+              <Link className='text-right text-white  txt-link'>Olvidé mi contraseña</Link>
+              <button className='btn btn-blue mt-4'>Login</button>
             </div>
           </div>
         </div>
