@@ -38,6 +38,7 @@
 .logn-image-column, .logn-form-column{
   padding-left: 0;
   padding-right: 0;
+    backdrop-filter: blur(4px);
 }
 
 .logn-image-column img{

@@ -11,7 +11,7 @@ const Login = () => {
           <div className="col-md-5 logn-image-column">
             <img src={logoLAP} alt="Logo" />
           </div>
-          <div className="col-md-6 logn-form-column">
+          <div className="col-md-5 logn-form-column">
             <div className="card card-body">
               <div className="form-group">
                 <label htmlFor="" className='mx-auto'>Usuario</label>
