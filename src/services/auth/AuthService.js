@@ -10,7 +10,7 @@ const AuthService = {
         "Content-Type": "application/json",
         "Authorization": "Bearer <token>" // Aquí deberías incluir tu token de autorización si lo tienes
       }
-    }).then(res => res.data)
+    }).then(res => res.data).catch(err => console.log(err));
   }
 }
 
