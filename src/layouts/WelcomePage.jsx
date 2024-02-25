@@ -17,7 +17,7 @@ const WelcomePage = () => {
     <div className="welcome-container mt-4">
       <div className="container mt-2">
         <div className="row">
-          <img src="http://localhost:5173/src/assets/logoLAP.png" className="mx-auto" width={350} alt="" />
+          <img src="http://localhost:5173/src/assets/logoLAP.png" className="mx-auto" width={350} />
         </div>
         <div className="row">
           <div className="col-md-10 mx-auto">

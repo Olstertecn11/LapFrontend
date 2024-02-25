@@ -24,19 +24,30 @@ const Login = () => {
 
   const sendForm = async () => {
     const response = await AuthService.login(user);
-    const { message, code, token } = response;
-    if (code == 1) {
+    const code = response[0].resultado;
+    if (code == 3) {
       history('/Bienvenida');
     }
     else {
-      Swal.fire({
-        title: 'Error!',
-        text: 'Usuario Incorrecto',
-        icon: 'error',
-        confirmButtonText: 'Cool'
-      })
-      setUser(empty_user);
+      if (code == 0) {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Usuario Incorrecto',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        });
+      }
+      else {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Contraseña Incorrecta',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        });
+
+      }
     }
+    setUser(empty_user);
   }
 
 
