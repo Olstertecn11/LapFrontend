@@ -1,12 +1,15 @@
 import './styles/Login.css';
 import logoLAP from './../assets/logoLAP.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import AuthService from './../services/auth/AuthService';
+import { Store } from 'react-notifications-component';
+import Swal from 'sweetalert2'
 
 
 const Login = () => {
 
+  const history = useNavigate();
   const empty_user = { username: '', password: '' };
   const [user, setUser] = useState(empty_user);
 
@@ -21,7 +24,19 @@ const Login = () => {
 
   const sendForm = async () => {
     const response = await AuthService.login(user);
-    console.log(response);
+    const { message, code, token } = response;
+    if (code == 1) {
+      history('/Bienvenida');
+    }
+    else {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Usuario Incorrecto',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
+      setUser(empty_user);
+    }
   }
 
 
