@@ -1,9 +1,31 @@
 import './styles/Login.css';
 import logoLAP from './../assets/logoLAP.png';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import AuthService from './../services/auth/AuthService';
 
 
 const Login = () => {
+
+  const empty_user = { username: '', password: '' };
+  const [user, setUser] = useState(empty_user);
+
+
+
+
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  const sendForm = async () => {
+    const response = await AuthService.login(user);
+    console.log(response);
+  }
+
+
+
   return (
     <div className='logn-box'>
       <div className="container logn-container">
@@ -14,15 +36,31 @@ const Login = () => {
           <div className="col-md-5 logn-form-column">
             <div className="card card-body">
               <div className="form-group">
-                <label htmlFor="" className='mx-auto'>Usuario</label>
-                <input type="text" placeholder="olster" className="form-control" />
+                <label htmlFor="" className='mx-auto'>Usuario:</label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Ingrese su usuario"
+                  className="form-control"
+                  value={user.username}
+                  onChange={handleChange}
+                />
               </div>
               <div className="form-group mt-2">
-                <label htmlFor="">Contraseña</label>
-                <input type="password" placeholder="*************" className="form-control" />
+                <label htmlFor="">Contraseña:</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Ingrese su contraseña"
+                  className="form-control"
+                  value={user.password}
+                  onChange={handleChange}
+                />
               </div>
               <Link className='text-right text-white  txt-link'>Olvidé mi contraseña</Link>
-              <button className='btn btn-blue mt-4'>Login</button>
+              <button className='btn btn-blue mt-4' onClick={sendForm}>Ingresar</button>
             </div>
           </div>
         </div>
