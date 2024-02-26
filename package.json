@@ -15,6 +15,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-notifications-component": "^4.0.1",
+    "react-pro-sidebar": "^1.1.0",
     "react-router-dom": "^6.22.1",
     "reapop": "^4.2.2",
     "sweetalert2": "^11.10.5"
