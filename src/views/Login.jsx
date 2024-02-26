@@ -24,7 +24,11 @@ const Login = () => {
 
   const sendForm = async () => {
     const response = await AuthService.login(user);
-    const code = response[0].resultado;
+    console.log(response);
+    const code = response.result;
+    const token = response.token_val;
+    const idUsr = response.id_usr;
+    localStorage.setItem('session', { idUsr, token });
     if (code == 3) {
       history('/Bienvenida');
     }
