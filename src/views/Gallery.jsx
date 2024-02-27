@@ -1,27 +1,19 @@
 import './styles/Gallery.css';
 import ActivityService from './../services/activities/ActivityService.js';
 import { useEffect, useState } from 'react';
+import { useFetch } from './../hooks/useFetch';
 
 const GalleryEvents = () => {
 
-  const [activities, setActivities] = useState([])
-
-
-
-  const fetchData = async () => {
-    const response = await ActivityService.getAll();
-    setActivities(response);
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const { data, isPending, error } = useFetch(ActivityService.getAll);
 
   return (
     <div>
+      {isPending && <div>Loading....</div>}
+      {error && <div>{error}</div>}
       <div className="row m-4">
-        {
-          activities.map(item => (
+        {data &&
+          data.map(item => (
             <div className="col-md-4">
               <div className="card gallery-card" >
                 <div className="card-body">
