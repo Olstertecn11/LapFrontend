@@ -3,6 +3,7 @@ import Login from "./views/Login"
 import WelcomePage from './layouts/WelcomePage';
 import Dashboard from './views/Dashboard';
 import Container from './layouts/Container';
+import Navbar from "./layouts/Navbar";
 
 function App() {
 
@@ -10,10 +11,11 @@ function App() {
     <>
 
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element=<Login /> />
           <Route path="/Bienvenida" element=<WelcomePage /> />
-          <Route path="/Dashboard" element=<Container Component={Dashboard} /> />
+          <Route path="/Dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </>
