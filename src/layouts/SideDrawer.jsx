@@ -47,7 +47,7 @@ const SideDrawer = ({ isOpen, onOpen, onClose, btnRef }) => {
               <i className='fa-solid fa-graduation-cap mr-2'></i>
               Plan de estudios
             </Button>
-            <Button variant='outline' mr={3} width={'100%'} mt={4} onClick={onClose}>
+            <Button variant='outline' mr={3} width={'100%'} mt={4} onClick={() => redirectURL('/Galeria')}>
               <i className='fa-solid fa-calendar mr-2'></i>
               Eventos
             </Button>
