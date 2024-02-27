@@ -1,0 +1,4 @@
+.gallery-card:hover{
+  cursor: pinter;
+  filter: brightness(0.9);
+}
