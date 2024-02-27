@@ -4,7 +4,7 @@ import WelcomePage from './layouts/WelcomePage';
 import Dashboard from './views/Dashboard';
 import Container from './layouts/Container';
 import Navbar from "./layouts/Navbar";
-import Gallery from "./views/Gallery";
+import GalleryEvents from "./views/Gallery";
 import Layout from "./layouts/Layout";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <Route path="/" element=<Login /> />
           <Route path="/Bienvenida" element=<WelcomePage /> />
           <Route path="/Dashboard" element={<Layout Component={Dashboard} />} />
-          <Route path="/Gallery" element={<Layout Component={Gallery} />} />
+          <Route path="/Galeria" element={<Layout Component={GalleryEvents} />} />
         </Routes>
       </BrowserRouter>
     </>
