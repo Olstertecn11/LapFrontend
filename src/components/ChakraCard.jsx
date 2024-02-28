@@ -17,7 +17,7 @@ const ChakraCard = ({ heading, description, icon, href, callback }) => {
 
   const handleRedirect = (link) => {
     history(link)
-    callback();
+    if (callback) callback();
   }
   return (
     <Box
