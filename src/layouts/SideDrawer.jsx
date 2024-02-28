@@ -50,7 +50,7 @@ const SideDrawer = ({ isOpen, onOpen, onClose, btnRef }) => {
           <DrawerFooter>
             <Stack>
               <small className='text-muted'> <em>Educando para la eternidad</em> </small>
-              <button className='btn btn-danger w-25 ml-auto' ><i className="fa-solid fa-power-off ml-2"></i></button>
+              <button className='btn btn-danger w-25 ml-auto' ><i className="fa-solid fa-power-off"></i></button>
             </Stack>
           </DrawerFooter>
         </DrawerContent>
