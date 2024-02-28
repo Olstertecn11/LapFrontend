@@ -1,5 +1,6 @@
 import './styles/Login.css';
 import logoLAP from './../assets/logoLAP.png';
+import loginBackground from '../assets/loginBackground.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import AuthService from './../services/auth/AuthService';
@@ -95,7 +96,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <img className='bg-image' src="https://science-teaching.org/wp-content/uploads/2022/12/stem-banner-que-es-educacion-stem.jpg" alt="" />
+      <img className='bg-image' src={loginBackground} alt="" />
     </div>
   )
 }
