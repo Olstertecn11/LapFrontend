@@ -27,6 +27,13 @@ const SideDrawer = ({ isOpen, onOpen, onClose, btnRef }) => {
     onClose();
   }
 
+  const handleClose = () => {
+    alert("closing");
+    localStorage.removeItem('session');
+    localStorage.clear();
+    history('/');
+  }
+
 
   return (
     <>
@@ -44,13 +51,11 @@ const SideDrawer = ({ isOpen, onOpen, onClose, btnRef }) => {
 
           <DrawerBody>
             <GridCardList callback={onClose} />
-
           </DrawerBody>
-
           <DrawerFooter>
             <Stack>
               <small className='text-muted'> <em>Educando para la eternidad</em> </small>
-              <button className='btn btn-danger w-25 ml-auto' ><i className="fa-solid fa-power-off"></i></button>
+              <button className='btn btn-danger w-25 ml-auto' onClick={handleClose} ><i className="fa-solid fa-power-off"></i></button>
             </Stack>
           </DrawerFooter>
         </DrawerContent>
