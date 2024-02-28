@@ -1,8 +1,5 @@
 import {
   Drawer,
-  Input,
-  Icon,
-  Button,
   DrawerBody,
   DrawerFooter,
   DrawerHeader,
@@ -11,13 +8,12 @@ import {
   DrawerCloseButton,
   Stack
 } from '@chakra-ui/react'
-import { FcRedo } from 'react-icons/fc';
 
 import { useNavigate } from 'react-router-dom';
 import GridCardList from '../components/GridCardList';
+import AuthService from '../services/auth/AuthService';
 
 const SideDrawer = ({ isOpen, onOpen, onClose, btnRef }) => {
-
 
   const history = useNavigate();
 
@@ -27,8 +23,10 @@ const SideDrawer = ({ isOpen, onOpen, onClose, btnRef }) => {
     onClose();
   }
 
-  const handleClose = () => {
-    alert("closing");
+  const handleClose = async () => {
+    const userSession = JSON.parse(localStorage.getItem('session'));
+    const idUser = userSession.idUsr;
+    const response = await AuthService.logout(idUser);
     localStorage.removeItem('session');
     localStorage.clear();
     history('/');
