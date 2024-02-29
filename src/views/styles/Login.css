@@ -1,5 +1,4 @@
-
-.bg-image{
+.bg-image {
   position: absolute;
   top: 0%;
   left: 0%;
@@ -13,42 +12,52 @@
 
 
 .logn-box:after {
-  content:'';
+  content: '';
   z-index: -1;
-  position:absolute;
-  left:0; top:0;
-  width:100%; height:100%;
-  display:inline-block;
-  background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
-  background: linear-gradient(to bottom, rgb(0 0 0 / 6%) 0%,rgb(15 42 103 / 38%) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0.65)), color-stop(100%, rgba(0, 0, 0, 0)));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
+  /* W3C */
+  background: linear-gradient(to bottom, rgb(0 0 0 / 6%) 0%, rgb(15 42 103 / 38%) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=0);
+  /* IE6-9 */
 }
 
 
 
-.logn-container{
-  margin-top: 10vw;
+.logn-container {
+  padding-top: 10vw;
 }
 
-.logn-image-column, .logn-form-column{
+.logn-image-column,
+.logn-form-column {
   padding-left: 0;
   padding-right: 0;
   backdrop-filter: blur(4px);
 }
 
-.logn-image-column img{
+.logn-image-column img {
   width: 100%;
   height: 20vw;
   object-fit: scale-down;
 }
 
 
-.logn-form-column .card{
+.logn-form-column .card {
   border-radius: 0px 18px 18px 0px;
   height: 100%;
   background-color: #3a555cc2;
@@ -56,21 +65,22 @@
 }
 
 
-.btn-blue{
+.btn-blue {
   background: #2A71A8;
 }
 
-.logn-form-column .card .form-group label{
+.logn-form-column .card .form-group label {
   color: white;
   font-weight: bold;
 }
 
-.card-body .form-group{
+.card-body .form-group {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
 }
-.card-body .form-group .form-control{
+
+.card-body .form-group .form-control {
   color: white;
   background: #7c8b907a;
   padding-left: 1vw;
@@ -78,7 +88,7 @@
   border-radius: 70px;
 }
 
-.card-body .btn-blue{
+.card-body .btn-blue {
   width: 25%;
   border-radius: 70vw;
   color: white;
@@ -88,13 +98,7 @@
 }
 
 
-.txt-link{
-    font-size: 0.7vw;
-    width: 80%;
+.txt-link {
+  font-size: 0.7vw;
+  width: 80%;
 }
-
-
-
-
-
-
