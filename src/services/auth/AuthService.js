@@ -21,9 +21,20 @@ const AuthService = {
       console.error('Error en la solicitud DELETE:', error);
       throw error; // Re-lanzar el error para que pueda ser manejado fuera de esta función
     }
+  },
+  hasSession: async (idUser, token) => {
+    console.log(idUser);
+    return axios.get(apiUrl, {
+      params: {
+        idUser: idUser,
+        token: token
+      },
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer <token>" // Aquí deberías incluir tu token de autorización si lo tienes
+      }
+    }).then(res => res.data).catch(err => console.log(err));
   }
-
-
 }
 
 export default AuthService;
