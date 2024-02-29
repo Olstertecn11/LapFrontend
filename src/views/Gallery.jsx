@@ -1,13 +1,19 @@
 import './styles/Gallery.css';
 import ActivityService from './../services/activities/ActivityService.js';
 import { useNavigate } from 'react-router-dom';
-import { useFetch } from './../hooks/useFetch';
-import { Button } from '@chakra-ui/react';
+import useFetch from './../hooks/useFetch';
+import ControlBox from "../components/ControlsBox";
+import Sidebar from '../components/Sidebar';
+import { useDisclosure } from '@chakra-ui/react';
+import { useRef, useState } from 'react';
+import NewEvent from '../layouts/NewEvent';
 
 const GalleryEvents = () => {
 
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = useRef()
   const history = useNavigate();
-  const { data, isPending, error } = useFetch(ActivityService.getAll);
+  const { data, isPending, error, updateData } = useFetch(ActivityService.getAll, []);
 
   const redirectURL = (url) => {
     history(url);
@@ -15,19 +21,7 @@ const GalleryEvents = () => {
 
   return (
     <div style={{ background: '#b6d0d6', height: '100%' }}>
-      {isPending && <div>Loading....</div>}
-      {error && <div>{error}</div>}
-      <div className="row">
-        <div className="col-md-4 mr-auto ml-4 mt-4">
-          <div className="card shadow p-3 mb-5 rounded" style={{ height: '10vh', width: '15vw', background: '#4e6e8a24 ' }}>
-            <div className="row">
-              <Button colorScheme={'green'} className='w-15 mr-auto ml-4 mt-2' > <i className='fa-solid fa-plus'></i></Button>
-              <Button colorScheme={'red'} className='w-15 mr-auto ml-4 mt-2' > <i className='fa-solid fa-trash'></i></Button>
-              <Button colorScheme={'blue'} className='w-15 mr-auto ml-4 mt-2' > <i className='fa-solid fa-magnifying-glass'></i></Button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ControlBox refArr={[btnRef]} handleArr={[onOpen]} />
       <div className="container pt-4">
         <div className="row">
           {data &&
@@ -44,6 +38,7 @@ const GalleryEvents = () => {
           }
         </div>
       </div>
+      <Sidebar updateData={updateData} Component={NewEvent} onOpen={onClose} onClose={onClose} isOpen={isOpen} title={'Nuevo Evento'} btnRef={btnRef} />
     </div>
 
   )
