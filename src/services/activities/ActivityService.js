@@ -26,8 +26,15 @@ const ActivityService = {
     })
       .then(res => res.data)
       .catch(err => console.log(err));
+  },
+  createActivity: async ({ name, description, date }) => {
+    return axios.post(apiUrl, { name, description, date },
+      {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(res => res.data).catch(err => console.log(err))
   }
-
 }
 
 export default ActivityService;
