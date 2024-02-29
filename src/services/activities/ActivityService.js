@@ -34,6 +34,16 @@ const ActivityService = {
           "Content-Type": "application/json"
         }
       }).then(res => res.data).catch(err => console.log(err))
+  },
+  saveImage: async ({ idActivity, img }) => {
+    const url = getApiUrl(`/activities/images`);
+    return axios.post(url, { idActivity, img },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer <token>" // Aquí deberías incluir tu token de autorización si lo tienes
+        }
+      }).then(res => res.data).catch(err => console.log(err))
   }
 }
 
