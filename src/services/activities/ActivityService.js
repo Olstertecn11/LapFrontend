@@ -24,7 +24,9 @@ const ActivityService = {
         "Authorization": "Bearer <token>" // Aquí deberías incluir tu token de autorización si lo tienes
       }
     })
-      .then(res => res.data)
+      .then(res => res.data.map((item) => {
+        return { src: item.img_src, width: 40, height: 40 };
+      }))
       .catch(err => console.log(err));
   },
   createActivity: async ({ name, description, date }) => {

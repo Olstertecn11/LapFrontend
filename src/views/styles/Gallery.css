@@ -1,4 +1,24 @@
-.gallery-card:hover{
+.gallery-card:hover {
   cursor: pinter;
   filter: brightness(0.9);
+}
+
+.react-photo-album--photo {
+  object-fit: cover;
+  border-radius: 1vw;
+}
+
+.react-photo-album--photo:hover {
+  filter: brightness(0.4);
+  cursor: pointer;
+}
+
+.react-photo-album.react-photo-album--columns {
+  padding: 2vw;
+  /* https://smoothshadows.com/#djEsMyw1LDAuMTUsOTcsMjUsMTIsIzAzMDcxMiwjZjNmNGY2LCNmZmZmZmYsMQ%3D%3D */
+  box-shadow: 0px 1px 4px rgba(3, 7, 18, 0.15),
+    2px 4px 16px rgba(3, 7, 18, 0.15),
+    4px 9px 35px rgba(3, 7, 18, 0.15),
+    8px 16px 62px rgba(3, 7, 18, 0.15),
+    12px 25px 97px rgba(3, 7, 18, 0.15);
 }
