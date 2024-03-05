@@ -40,8 +40,8 @@ const ChakraCard = ({ heading, description, icon, href, callback }) => {
           {icon}
         </Flex>
         <Box mt={2}>
-          <Heading size="md">{heading}</Heading>
-          <Text mt={1} fontSize={'sm'}>
+          <Heading size="md" color={'black'}>{heading}</Heading>
+          <Text mt={1} fontSize={'sm'} color='black' >
             {description}
           </Text>
         </Box>

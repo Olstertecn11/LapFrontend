@@ -23,17 +23,14 @@ const GalleryEvents = () => {
     <div style={{ background: '#b6d0d6', height: '100%' }}>
       <ControlBox refArr={[btnRef]} handleArr={[onOpen]} />
       <div className="container pt-4">
-        <div className="row">
+        <div className="card-columns">
           {data &&
             data.map((item, index) => (
-              <div className="col-md-5 mx-auto " key={item.act_name + index}>
-                <div className="card gallery-card shadow p-3 mb-5 bg-white rounded" onClick={() => redirectURL(`/GaleriaImagenes/${item.act_id}`)} >
-                  <div className="card-body">
-                    <h2 style={{ color: '#76a0aa', fontWeight: 'bold' }} >{item.act_name}</h2>
-                  </div>
+              <div key={item + index} className="card gallery-card shadow p-3 mb-5 bg-white rounded" onClick={() => redirectURL(`/GaleriaImagenes/${item.act_id}`)} >
+                <div className="card-body">
+                  <h2 style={{ color: '#76a0aa', fontWeight: 'bold' }} >{item.act_name}</h2>
                 </div>
               </div>
-
             ))
           }
         </div>

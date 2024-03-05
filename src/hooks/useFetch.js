@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 
-const useFetch = (myService, params) => {
+const useFetch = (myService, params, args) => {
 
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(false);
@@ -11,7 +11,7 @@ const useFetch = (myService, params) => {
     const fetchData = async () => {
       setIsPending(true);
       try {
-        const response = await myService();
+        const response = await myService(args);
         setData(response);
         setIsPending(false);
         setError(null);
