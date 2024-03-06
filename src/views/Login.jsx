@@ -29,7 +29,7 @@ const Login = () => {
     const code = response.result;
     const token = response.token_val;
     const idUsr = response.id_usr;
-    const role = response.credencials;
+    const role = response.credentials;
     localStorage.setItem('session', JSON.stringify({ idUsr, token, role }));
     if (code == 3) {
       history('/Bienvenida');

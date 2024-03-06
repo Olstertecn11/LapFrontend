@@ -1,0 +1,8 @@
+.pdf-card{
+  margin-top: 2vw;
+}
+
+.pdf-card:hover{
+  background-color: #e4e6e8;
+  cursor: pointer;
+}
