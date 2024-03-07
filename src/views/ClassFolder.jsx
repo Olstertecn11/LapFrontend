@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useEffect } from "react";
 import OverlayModal from "../components/OverlayModal";
 import PdfPreviewer from "../layouts/PdfPreviewer";
 import { useDisclosure } from "@chakra-ui/react";
 import './styles/classFolder.css';
 import PdfCard from '../components/PdfCard';
 import { Button } from "@chakra-ui/react";
-
+import { useParams } from "react-router-dom";
+import FileService from '../services/files/FileService.js';
+import StoreManagment from '../helpers/StorageManagement.js';
 
 
 
@@ -16,18 +17,14 @@ const ClassFolder = () => {
   const [pdfList, setPdfList] = useState([]);
   const [pdfSelected, setPdfSelected] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const { id } = useParams();
+  const { role } = StoreManagment.getObject('session');
 
 
-  const getPDF = () => {
-    fetch('http://localhost:3000/pdfs')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setPdfList(data);
-      })
-      .catch(error => {
-        console.error('Error al obtener los archivos PDF:', error);
-      });
+  const getPDF = async () => {
+    const response = await FileService.getFiles();
+    const filteredResponse = role === 1 ? response : response.filter((item) => item.id_clase == id);
+    setPdfList(filteredResponse);
   }
 
   useEffect(() => {
@@ -44,7 +41,7 @@ const ClassFolder = () => {
     formData.append('pdfFile', selectedFile);
 
     try {
-      const response = await axios.post('http://localhost:3000/upload', formData, {
+      const response = await axios.post(`http://localhost:3000/upload?id=${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -70,8 +67,7 @@ const ClassFolder = () => {
 
           {
             pdfList.map((item, index) => (
-              <PdfCard title={'PDF'} stat={item.nombre} key={item.nombre + index} _class={'pdf-card'} click={() => selectPdf(item)} />
-              // <li onClick={() => selectPdf(item)} key={item.nombre + index}>{item.nombre}</li>
+              <PdfCard title={item.fecha_creacion.substring(0, 10)} stat={item.nombre} key={item.nombre + index} _class={'pdf-card'} click={() => selectPdf(item)} />
             ))
           }
         </div>
@@ -85,7 +81,7 @@ const ClassFolder = () => {
           </form>
         </div>
       </div>
-      <OverlayModal onOpen={onOpen} onClose={onClose} isOpen={isOpen} Component={() => <PdfPreviewer pdf={pdfSelected} />} />
+      <OverlayModal title={pdfSelected ? pdfSelected.nombre : ''} onOpen={onOpen} onClose={onClose} isOpen={isOpen} Component={() => <PdfPreviewer pdf={pdfSelected} />} />
     </div>
   );
 }

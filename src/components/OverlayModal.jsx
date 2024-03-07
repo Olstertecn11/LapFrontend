@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 import { useState } from 'react'
 
-const OverlayModal = ({ isOpen, onOpen, onClose, Component }) => {
+const OverlayModal = ({ isOpen, onOpen, onClose, Component, title = "Previsualizacion de Documento" }) => {
   const OverlayOne = () => (
     <ModalOverlay
       bg='blackAlpha.300'
@@ -32,10 +32,10 @@ const OverlayModal = ({ isOpen, onOpen, onClose, Component }) => {
 
   return (
     <>
-      <Modal isCentered isOpen={isOpen} onClose={onClose} size={'6xl'} mt={'2vw'} >
+      <Modal isCentered isOpen={isOpen} onClose={onClose} size={'6xl'} >
         {overlay}
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>{title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             {Component &&

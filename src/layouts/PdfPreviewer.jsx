@@ -18,7 +18,7 @@ const PdfPreviewer = ({ pdf }) => {
     <div>
       {
         pdf && (
-          <iframe src={`data:application/pdf;base64,${arrayBufferToBase64(pdf.contenido.data)}`} width="100%" height="400px" />
+          <iframe src={`data:application/pdf;base64,${arrayBufferToBase64(pdf.contenido.data)}`} width="100%" height="480vh" />
         )
       }
     </div>

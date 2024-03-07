@@ -4,12 +4,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StoreManagment from '../helpers/StorageManagement.js';
+import { Text } from "@chakra-ui/react";
 
 const CoursePrograms = () => {
 
   const history = useNavigate();
   const [data, setData] = useState([]);
-  const { idUsr, role } = StoreManagment.getObject('session');
+  const { idUsr, role, username } = StoreManagment.getObject('session');
 
   const fetch = async () => {
     const response = role === 1 ? await ClassService.getAll() : await ClassService.getByTeacher(idUsr);
@@ -29,8 +30,34 @@ const CoursePrograms = () => {
 
   return (
     <div className="container p-4">
-      <div className="card-columns">
+      <div className="row mb-0 mt-4 ml-2">
 
+        <Text
+          fontWeight={'bold'}
+          as={'span'}
+          fontSize={'3xl'}
+          position={'relative'}
+          _after={{
+            content: "''",
+            width: 'full',
+            height: '30%',
+            position: 'absolute',
+            bottom: 1,
+            left: 0,
+            bg: 'blue.400',
+            zIndex: -1,
+          }}>
+          Hola {username}
+        </Text>
+
+      </div>
+      <div className="row mb-4 ml-0">
+        <Text as={'span'} color={'blue.400'} ml={'2'} fontSize={'2xl'} fontWeight={'bold'} >
+          En esta seccion podrás ver todos tus cursos
+        </Text>
+      </div>
+
+      <div className="card-columns">
         {data && data.length != 0 ?
           (
             data.map((item, index) => (
