@@ -4,8 +4,8 @@ import { getApiUrl } from './../../config/config';
 const FileService = {
 
   upload: async (id, formData) => {
-    const _endpoint = `/upload?id=${id}`;
-    return axios.post(getApiUrl(_endpoint), formData, {
+    console.log(getApiUrl('/upload') + `&id=${id}`);
+    return axios.post(getApiUrl('/upload') + `&id=${id}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

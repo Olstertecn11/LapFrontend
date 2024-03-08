@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import FileService from '../services/files/FileService.js';
 import StoreManagment from '../helpers/StorageManagement.js';
 import { Text } from "@chakra-ui/react";
-
+import Swal from 'sweetalert2'
 
 
 const ClassFolder = () => {
@@ -42,13 +42,25 @@ const ClassFolder = () => {
     formData.append('pdfFile', selectedFile);
 
     try {
-      const response = await axios.post(`https://lap-backend-rflw.vercel.app/upload?id=${id}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      alert(response.data);
-      getPDF();
+      const response = await FileService.upload(id, formData);
+      console.log(response);
+      if (response.status === 200) {
+        Swal.fire({
+          title: 'Accion Realizada',
+          text: 'Archivo Subido',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        });
+        getPDF();
+      }
+      else {
+        Swal.fire({
+          title: 'Accion Denegada',
+          text: 'Error al subir el archivo',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        });
+      }
     } catch (error) {
       console.error('Error al enviar el archivo:', error);
     }
