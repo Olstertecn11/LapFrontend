@@ -42,7 +42,7 @@ const ClassFolder = () => {
     formData.append('pdfFile', selectedFile);
 
     try {
-      const response = await axios.post(`http://localhost:3000/upload?id=${id}`, formData, {
+      const response = await axios.post(`https://lap-backend-rflw.vercel.app/upload?id=${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
