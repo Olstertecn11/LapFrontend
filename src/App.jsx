@@ -10,6 +10,7 @@ import Layout from "./layouts/Layout";
 import NotFound from "./views/NotFound";
 import CoursePrograms from "./views/CoursePrograms";
 import ClassFolder from "./views/ClassFolder";
+import AdminDashboard from "./views/AdminDashboard";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/GaleriaImagenes/:id" element={<Layout Component={GalleryImages} />} />
           <Route path="/Documentos" element={<Layout Component={CoursePrograms} />} />
           <Route path="/Clase/:id" element={<Layout Component={ClassFolder} />} />
+          <Route path="/Admin/" element={<Layout Component={AdminDashboard} />} />
           <Route path="*" element={<Layout Component={NotFound} />} />
         </Routes>
       </BrowserRouter>

@@ -43,16 +43,16 @@ const SideDrawer = ({ isOpen, onOpen, onClose, btnRef }) => {
         finalFocusRef={btnRef}
       >
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent background={'#dae9f7'}>
           <DrawerCloseButton />
           <DrawerHeader>MENU</DrawerHeader>
 
-          <DrawerBody>
+          <DrawerBody >
             <GridCardList callback={onClose} />
           </DrawerBody>
           <DrawerFooter>
             <Stack>
-              <small className='text-muted'> <em>Educando para la eternidad</em> </small>
+              <small style={{ color: '#374e67' }}> <em>Educando para la eternidad</em> </small>
               <button className='btn btn-danger w-25 ml-auto' onClick={handleClose} ><i className="fa-solid fa-power-off"></i></button>
             </Stack>
           </DrawerFooter>

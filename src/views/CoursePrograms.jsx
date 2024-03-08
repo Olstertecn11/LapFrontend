@@ -14,6 +14,7 @@ const CoursePrograms = () => {
 
   const fetch = async () => {
     const response = role === 1 ? await ClassService.getAll() : await ClassService.getByTeacher(idUsr);
+    console.log(response);
     setData(response.data);
   }
 
@@ -35,6 +36,7 @@ const CoursePrograms = () => {
         <Text
           fontWeight={'bold'}
           as={'span'}
+          color={'blue.900'}
           fontSize={'3xl'}
           position={'relative'}
           _after={{
@@ -44,7 +46,7 @@ const CoursePrograms = () => {
             position: 'absolute',
             bottom: 1,
             left: 0,
-            bg: 'blue.400',
+            bg: 'blue.100',
             zIndex: -1,
           }}>
           Hola {username}
@@ -62,7 +64,10 @@ const CoursePrograms = () => {
           (
             data.map((item, index) => (
               <div className="card gallery-card shadow p-3 mb-5 bg-white rounded" key={item.degree_name + index} onClick={() => handleClick(item.cls_id)}>
-                <h5>{item.degree_name}</h5>
+                <h5>{item.subject_name}</h5>
+                <Text as={'span'} color={'green.400'} fontWeight={'bold'}>
+                  {item.degree_name}
+                </Text>
               </div>
             )))
           :

@@ -7,6 +7,8 @@ import Sidebar from '../components/Sidebar';
 import { useDisclosure } from '@chakra-ui/react';
 import { useRef, useState } from 'react';
 import NewEvent from '../layouts/NewEvent';
+import OverlayModal from '../components/OverlayModal';
+import SelectDelete from '../components/SelectDelete';
 
 const GalleryEvents = () => {
 
@@ -21,7 +23,7 @@ const GalleryEvents = () => {
 
   return (
     <div style={{ background: '#b6d0d6', height: '100%' }}>
-      <ControlBox refArr={[btnRef]} handleArr={[onOpen]} />
+      <ControlBox refArr={[btnRef]} handleArr={[onOpen, () => console.log('working..')]} />
       <div className="container pt-4">
         <div className="card-columns">
           {data &&

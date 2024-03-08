@@ -15,15 +15,20 @@ import {
   FcGallery,
   FcContacts,
   FcGraduationCap,
-  FcAdvertising
+  FcAdvertising,
+  FcBusinesswoman
 } from 'react-icons/fc'
 import ChakraCard from './ChakraCard'
+import StorageManagement from '../helpers/StorageManagement.js'
 
 
 
 
 
 const GridChakraCardList = ({ callback }) => {
+
+  const { role } = StorageManagement.getObject('session');
+
   return (
     <Box p={4}>
 
@@ -49,13 +54,27 @@ const GridChakraCardList = ({ callback }) => {
           description={'Tome la asistencia del grado correspondiente'}
           href={'/Asistencia'}
         />
-        <ChakraCard
-          callback={callback}
-          heading={'Noticias'}
-          icon={<Icon as={FcAdvertising} w={10} h={10} />}
-          description={'Podrá ver las noticias creadas por la adminsitracion del colegio'}
-          href={'/Noticias'}
-        />
+        {
+          role === 2 ?
+            (
+              <ChakraCard
+                callback={callback}
+                heading={'Noticias'}
+                icon={<Icon as={FcAdvertising} w={10} h={10} />}
+                description={'Podrá ver las noticias creadas por la adminsitracion del colegio'}
+                href={'/Noticias'}
+              />)
+            :
+            (
+              <ChakraCard
+                callback={callback}
+                heading={'Administración'}
+                icon={<Icon as={FcBusinesswoman} w={10} h={10} />}
+                description={'Exclusivvo para usuarios administradores'}
+                href={'/Admin'}
+              />)
+        }
+
       </Flex>
       </Container>
     </Box>

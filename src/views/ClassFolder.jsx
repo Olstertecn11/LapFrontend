@@ -9,6 +9,7 @@ import { Button } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import FileService from '../services/files/FileService.js';
 import StoreManagment from '../helpers/StorageManagement.js';
+import { Text } from "@chakra-ui/react";
 
 
 
@@ -72,12 +73,29 @@ const ClassFolder = () => {
           }
         </div>
         <div className="col-md-5 mx-auto">
-          <h1>Subir PDF</h1>
+          <Text
+            fontWeight={'bold'}
+            fontSize={'3xl'}
+            as={'span'}
+            position={'relative'}
+            mb={2}
+            _after={{
+              content: "''",
+              width: 'full',
+              height: '30%',
+              position: 'absolute',
+              bottom: 1,
+              left: 0,
+              bg: 'yellow.400',
+              zIndex: -1,
+            }}>
+            Subir Planificación
+          </Text>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <input type="file" onChange={handleFileChange} accept=".pdf" />
             </div>
-            <Button type="submit" colorScheme={'yellow'} >Subir PDF</Button>
+            <Button type="submit" colorScheme={'yellow'} >Guardar</Button>
           </form>
         </div>
       </div>

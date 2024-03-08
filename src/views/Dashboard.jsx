@@ -8,7 +8,7 @@ const Dashboard = () => {
 
 
   return (
-    <div style={{ background: '#b6d0d6', height: '100%' }}>
+    <div style={{ background: '#b6d0d6', height: 'auto' }}>
       <GridCardList />
     </div>
   )

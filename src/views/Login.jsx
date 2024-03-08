@@ -75,7 +75,7 @@ const Login = () => {
           <div className="col-md-5 logn-form-column">
             <div className="card card-body">
               <div className="form-group">
-                <label htmlFor="" className='mx-auto'>Usuario:</label>
+                <label htmlFor="" className='mx-auto'>Usuario</label>
                 <input
                   type="text"
                   id="username"
@@ -87,7 +87,7 @@ const Login = () => {
                 />
               </div>
               <div className="form-group mt-2">
-                <label htmlFor="">Contraseña:</label>
+                <label htmlFor="">Contraseña</label>
                 <input
                   type="password"
                   id="password"
