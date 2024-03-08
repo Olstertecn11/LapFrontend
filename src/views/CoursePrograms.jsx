@@ -13,7 +13,7 @@ const CoursePrograms = () => {
   const { idUsr, role, username } = StoreManagment.getObject('session');
 
   const fetch = async () => {
-    const response = role === 1 ? await ClassService.getAll() : await ClassService.getByTeacher(idUsr);
+    const response = role === 3 ? await ClassService.getAll() : await ClassService.getByTeacher(idUsr);
     console.log(response);
     setData(response.data);
   }
