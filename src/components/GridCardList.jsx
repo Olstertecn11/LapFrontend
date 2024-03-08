@@ -55,7 +55,7 @@ const GridChakraCardList = ({ callback }) => {
           href={'/Asistencia'}
         />
         {
-          role === 2 ?
+          role === 4 ?
             (
               <ChakraCard
                 callback={callback}
