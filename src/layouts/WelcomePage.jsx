@@ -1,6 +1,7 @@
 import ProgressBar from "@ramonak/react-progress-bar";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import loadImage from '../assets/logoLAP.png'
 const WelcomePage = () => {
 
   const history = useNavigate();
@@ -17,7 +18,7 @@ const WelcomePage = () => {
     <div className="welcome-container mt-4">
       <div className="container mt-2">
         <div className="row">
-          <img src="http://localhost:5173/src/assets/logoLAP.png" className="mx-auto" width={350} />
+          <img src={loadImage} className="mx-auto" width={350} />
         </div>
         <div className="row">
           <div className="col-md-10 mx-auto">
