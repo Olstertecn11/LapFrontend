@@ -16,6 +16,7 @@ const GalleryEvents = () => {
   const btnRef = useRef()
   const history = useNavigate();
   const { data, isPending, error, updateData } = useFetch(ActivityService.getAll, []);
+  console.log(data);
 
   const redirectURL = (url) => {
     history(url);
@@ -23,18 +24,21 @@ const GalleryEvents = () => {
 
   return (
     <div style={{ background: '#b6d0d6', height: '100%' }}>
-      <ControlBox refArr={[btnRef]} handleArr={[onOpen, () => console.log('working..')]} />
+      <ControlBox refArr={[btnRef]} handleArr={[onOpen, () => console.log('working..')]} data={data} updateData={updateData} deleteData={ActivityService.deleteActivity} />
       <div className="container pt-4">
-        <div className="card-columns">
-          {data &&
-            data.map((item, index) => (
-              <div key={item + index} className="card gallery-card shadow p-3 mb-5 bg-white rounded" onClick={() => redirectURL(`/GaleriaImagenes/${item.act_id}`)} >
-                <div className="card-body">
-                  <h2 style={{ color: '#76a0aa', fontWeight: 'bold' }} >{item.act_name}</h2>
+        <div className="row">
+
+          <div className="card-columns">
+            {data &&
+              data.map((item, index) => (
+                <div key={item + index} className="card gallery-card shadow p-1 mb-5 bg-white rounded" onClick={() => redirectURL(`/GaleriaImagenes/${item.act_id}`)} >
+                  <div className="card-body">
+                    <h5 style={{ color: '#76a0aa', fontWeight: 'bold' }} >{item.act_name}</h5>
+                  </div>
                 </div>
-              </div>
-            ))
-          }
+              ))
+            }
+          </div>
         </div>
       </div>
       <Sidebar updateData={updateData} Component={NewEvent} onOpen={onClose} onClose={onClose} isOpen={isOpen} title={'Nuevo Evento'} btnRef={btnRef} />

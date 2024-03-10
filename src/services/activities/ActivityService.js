@@ -46,6 +46,9 @@ const ActivityService = {
           "Authorization": "Bearer <token>" // Aquí deberías incluir tu token de autorización si lo tienes
         }
       }).then(res => res.data).catch(err => console.log(err))
+  },
+  deleteActivity: async (id) => {
+    alert(`delete: ${id}`);
   }
 }
 

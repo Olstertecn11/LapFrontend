@@ -12,6 +12,8 @@ import Swal from 'sweetalert2'
 
 const DeleteAnything = ({ data, Service, event }) => {
 
+  console.log(data[0]);
+
 
 
   const handleClick = async (id) => {
@@ -49,8 +51,8 @@ const DeleteAnything = ({ data, Service, event }) => {
             colorScheme='red'
             fontSize='lg'
           >
-            <TagLabel>{item.nombre}</TagLabel>
-            <TagCloseButton onClick={() => handleClick(item.id)} />
+            <TagLabel>{Object.entries(item)[1][1]}</TagLabel>
+            <TagCloseButton onClick={() => handleClick(Object.entries(item)[0][1])} />
           </Tag>
         ))}
       </VStack>

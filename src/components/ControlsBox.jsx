@@ -8,6 +8,7 @@ import DeleteAnything from "./DeleteAnything";
 
 const ControlBox = ({ refArr, handleArr, data, updateData, deleteData }) => {
 
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const closeEvent = () => {
