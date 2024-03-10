@@ -28,7 +28,7 @@ const Sidebar = ({ Component, title, isOpen, onOpen, onClose, btnRef, updateData
           <DrawerBody>
             {
               Component && (
-                <Component updateData={updateData} event={onOpen} />
+                <Component updateData={updateData} event={onClose} />
               )
             }
           </DrawerBody>

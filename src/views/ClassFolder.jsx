@@ -1,25 +1,29 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import OverlayModal from "../components/OverlayModal";
 import PdfPreviewer from "../layouts/PdfPreviewer";
 import { useDisclosure } from "@chakra-ui/react";
 import './styles/classFolder.css';
 import PdfCard from '../components/PdfCard';
-import { Button } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import FileService from '../services/files/FileService.js';
 import StoreManagment from '../helpers/StorageManagement.js';
-import { Text } from "@chakra-ui/react";
-import Swal from 'sweetalert2'
+import ControlBox from "../components/ControlsBox";
+import Sidebar from "../components/Sidebar";
+import { useRef } from "react";
+import UploadFile from "../layouts/UploadFile";
 
 
 const ClassFolder = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
   const [pdfList, setPdfList] = useState([]);
   const [pdfSelected, setPdfSelected] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen: isOpenS, onOpen: onOpenS, onClose: onCloseS } = useDisclosure()
+  console.log(isOpenS);
+  console.log(isOpen);
   const { id } = useParams();
   const { role } = StoreManagment.getObject('session');
+
+  const sideOpenRef = useRef();
 
 
   const getPDF = async () => {
@@ -32,40 +36,6 @@ const ClassFolder = () => {
     getPDF();
   }, []);
 
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData();
-    formData.append('pdfFile', selectedFile);
-
-    try {
-      const response = await FileService.upload(id, formData);
-      console.log(response);
-      if (response.status === 200) {
-        Swal.fire({
-          title: 'Accion Realizada',
-          text: 'Archivo Subido',
-          icon: 'success',
-          confirmButtonText: 'Cool'
-        });
-        getPDF();
-      }
-      else {
-        Swal.fire({
-          title: 'Accion Denegada',
-          text: 'Error al subir el archivo',
-          icon: 'error',
-          confirmButtonText: 'Cool'
-        });
-      }
-    } catch (error) {
-      console.error('Error al enviar el archivo:', error);
-    }
-  };
-
 
 
   const selectPdf = (selected) => {
@@ -75,42 +45,17 @@ const ClassFolder = () => {
 
   return (
     <div className="container p-4">
+      <ControlBox refArr={[sideOpenRef]} handleArr={[onOpenS]} />
       <div className="row">
-        <div className="col-md-5 mx-auto">
-
-          {
-            pdfList.map((item, index) => (
-              <PdfCard title={item.fecha_creacion.substring(0, 10)} stat={item.nombre} key={item.nombre + index} _class={'pdf-card'} click={() => selectPdf(item)} />
-            ))
-          }
-        </div>
-        <div className="col-md-5 mx-auto">
-          <Text
-            fontWeight={'bold'}
-            fontSize={'3xl'}
-            as={'span'}
-            position={'relative'}
-            mb={2}
-            _after={{
-              content: "''",
-              width: 'full',
-              height: '30%',
-              position: 'absolute',
-              bottom: 1,
-              left: 0,
-              bg: 'yellow.400',
-              zIndex: -1,
-            }}>
-            Subir Planificación
-          </Text>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <input type="file" onChange={handleFileChange} accept=".pdf" />
+        {
+          pdfList.map((item, index) => (
+            <div className="col-md-4" key={item.nombre + index}>
+              <PdfCard title={item.fecha_creacion.substring(0, 10)} stat={item.nombre} _class={'pdf-card'} click={() => selectPdf(item)} />
             </div>
-            <Button type="submit" colorScheme={'yellow'} >Guardar</Button>
-          </form>
-        </div>
+          ))
+        }
       </div>
+      <Sidebar updateData={getPDF} Component={UploadFile} onOpen={onOpenS} onClose={onCloseS} isOpen={isOpenS} title={'Subir Archivo'} btnRef={sideOpenRef} />
       <OverlayModal title={pdfSelected ? pdfSelected.nombre : ''} onOpen={onOpen} onClose={onClose} isOpen={isOpen} Component={() => <PdfPreviewer pdf={pdfSelected} />} />
     </div>
   );

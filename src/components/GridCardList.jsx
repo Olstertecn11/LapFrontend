@@ -70,7 +70,7 @@ const GridChakraCardList = ({ callback }) => {
                 callback={callback}
                 heading={'Administración'}
                 icon={<Icon as={FcBusinesswoman} w={10} h={10} />}
-                description={'Exclusivvo para usuarios administradores'}
+                description={'Exclusivo para usuarios administradores'}
                 href={'/Admin'}
               />)
         }

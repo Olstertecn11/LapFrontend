@@ -13,7 +13,8 @@ const CoursePrograms = () => {
   const { idUsr, role, username } = StoreManagment.getObject('session');
 
   const fetch = async () => {
-    const response = role === 3 ? await ClassService.getAll() : await ClassService.getByTeacher(idUsr);
+    const response = role === 1 ? await ClassService.getAll() : await ClassService.getByTeacher(idUsr);
+    // const response = role === 3 ? await ClassService.getAll() : await ClassService.getByTeacher(idUsr);
     console.log(response);
     setData(response.data);
   }
@@ -65,9 +66,14 @@ const CoursePrograms = () => {
             data.map((item, index) => (
               <div className="card gallery-card shadow p-3 mb-5 bg-white rounded" key={item.degree_name + index} onClick={() => handleClick(item.cls_id)}>
                 <h5>{item.subject_name}</h5>
-                <Text as={'span'} color={'green.400'} fontWeight={'bold'}>
-                  {item.degree_name}
-                </Text>
+                <div className="row pl-3 pr-3">
+                  <Text as={'span'} color={'green.400'} fontWeight={'bold'}>
+                    {item.degree_name}
+                  </Text>
+                  <Text color={'gray.500'} className='ml-auto mr-2' >
+                    Prof. {item.teacher_name}
+                  </Text>
+                </div>
               </div>
             )))
           :

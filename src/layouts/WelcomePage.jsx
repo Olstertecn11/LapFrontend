@@ -10,7 +10,7 @@ const WelcomePage = () => {
   useEffect(() => {
     setTimeout(() => {
       history('/Dashboard');
-    }, 6000);
+    }, 1000);
   }, []);
 
 
