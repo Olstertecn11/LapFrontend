@@ -19,6 +19,14 @@ const FileService = {
         "Authorization": "Bearer <token>"
       }
     }).then(res => res.data).catch(err => console.log(err));
+  },
+  delete: async (id) => {
+    return axios.delete(getApiUrl('/pdfs') + `&id=${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer <token>"
+      }
+    }).then(res => res.data).catch(err => console.log(err));
   }
 }
 

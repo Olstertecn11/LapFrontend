@@ -45,7 +45,7 @@ const ClassFolder = () => {
 
   return (
     <div className="container p-4">
-      <ControlBox refArr={[sideOpenRef]} handleArr={[onOpenS]} />
+      <ControlBox refArr={[sideOpenRef]} handleArr={[onOpenS]} data={pdfList} deleteData={FileService.delete} updateData={getPDF} />
       <div className="row">
         {
           pdfList.map((item, index) => (

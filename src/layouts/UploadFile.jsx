@@ -45,29 +45,11 @@ const UploadFile = ({ event, updateData }) => {
 
   return (
     <div>
-      <Text
-        fontWeight={'bold'}
-        fontSize={'3xl'}
-        as={'span'}
-        position={'relative'}
-        mb={2}
-        _after={{
-          content: "''",
-          width: 'full',
-          height: '30%',
-          position: 'absolute',
-          bottom: 1,
-          left: 0,
-          bg: 'yellow.400',
-          zIndex: -1,
-        }}>
-        Subir Planificación
-      </Text>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input type="file" accept=".pdf" onChange={handleFileChange} />
         </div>
-        <Button type="submit" colorScheme={'yellow'} >Guardar</Button>
+        <Button type="submit" colorScheme={'green'} >Guardar</Button>
       </form>
     </div>
   )
