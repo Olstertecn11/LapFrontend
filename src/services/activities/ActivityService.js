@@ -48,7 +48,12 @@ const ActivityService = {
       }).then(res => res.data).catch(err => console.log(err))
   },
   deleteActivity: async (id) => {
-    alert(`delete: ${id}`);
+    return axios.delete(getApiUrl('/activities') + `&id=${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer <token>"
+      }
+    }).then(res => res.data).catch(err => console.log(err));
   }
 }
 
