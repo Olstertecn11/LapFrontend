@@ -38,7 +38,7 @@ const NewUser = ({ event, updateData }) => {
         text: "Evento creado correctamente",
         icon: "success"
       });
-      // updateData();
+      updateData();
     }
     else {
       Swal.fire({
