@@ -1,19 +1,22 @@
+
 import { useDisclosure, Text, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import ControlBox from "../components/ControlsBox";
 import { useRef } from 'react';
 import useFetch from '../hooks/useFetch';
 import Sidebar from '../components/Sidebar';
 import DataTable from "../components/DataTable";
+import { useState, useEffect } from "react";
 
 
-const AdminSection = ({ title, ServiceGet, ServiceDelete, titleNew, ComponentNew }) => {
-
+const AdminSection = ({ margin = '2vw', title, ServiceGet, ServiceDelete, titleNew, ComponentNew }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
 
   const { data, isPending, error, updateData } = useFetch(ServiceGet, []);
+
+
   return (
-    <div>
+    <div style={{ marginTop: margin }}>
       <div className="row">
         <div className="col-md-6">
           <div className="card">
@@ -32,17 +35,15 @@ const AdminSection = ({ title, ServiceGet, ServiceDelete, titleNew, ComponentNew
                 {title}
               </Text>
             </div>
-            {data && data ?
-              (<ControlBox refArr={[btnRef]} handleArr={[onOpen]} data={data.data} updateData={updateData} deleteData={ServiceDelete} />) :
-              ''
-            }
+            <ControlBox refArr={[btnRef]} handleArr={[onOpen]} data={data} updateData={updateData} deleteData={ServiceDelete} />
             <Sidebar updateData={updateData} Component={ComponentNew} onOpen={onClose} onClose={onClose} isOpen={isOpen} title={titleNew} btnRef={btnRef} />
           </div>
         </div>
         <div className="col-md-6 mx-auto">
-          {data && data ?
-            (<DataTable data={data !== undefined ? data.data : []} />)
-            : ''
+          {data && data ? (
+
+            <DataTable data={data} />
+          ) : ''
           }
         </div>
       </div>
@@ -50,6 +51,5 @@ const AdminSection = ({ title, ServiceGet, ServiceDelete, titleNew, ComponentNew
   )
 }
 
-
-
 export default AdminSection;
+
