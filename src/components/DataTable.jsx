@@ -6,7 +6,8 @@ const DataTable = ({ data }) => {
         <thead>
           <tr>
             {Object.keys(data[0]).map(key => (
-              <th key={key}>{key}</th>
+              // removing refix
+              <th key={key}>{key.substring(key.indexOf("_") + 1)}</th>
             ))}
           </tr>
         </thead>
