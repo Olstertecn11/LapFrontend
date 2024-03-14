@@ -27,7 +27,7 @@ const UserService = {
         "Content-Type": "application/json",
         "Authorization": "Bearer <token>"
       }
-    }).then(res => res.data).catch(err => console.log(err));
+    }).then(res => res.data.data).catch(err => console.log(err));
   }
 }
 
