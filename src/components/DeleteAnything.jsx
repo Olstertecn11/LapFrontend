@@ -19,6 +19,7 @@ const DeleteAnything = ({ data, Service, event }) => {
   const handleClick = async (id) => {
     const response = await Service(id);
     event();
+    console.log('respnse');
     console.log(response);
     if (response.code !== 0) {
       Swal.fire({
