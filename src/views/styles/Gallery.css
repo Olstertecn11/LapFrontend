@@ -1,5 +1,5 @@
 .gallery-card:hover {
-  cursor: pinter;
+  cursor: pointer;
   filter: brightness(0.9);
 }
 
