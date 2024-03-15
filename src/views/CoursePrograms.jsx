@@ -21,7 +21,7 @@ const CoursePrograms = () => {
 
   useEffect(() => {
     const getService = () => {
-      if (role === 1) {
+      if (role === 3) {
         return ClassService.getAll;
       } else {
         return () => ClassService.getByTeacher(idUsr);

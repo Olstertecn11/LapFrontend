@@ -28,7 +28,7 @@ const ClassFolder = () => {
 
   const getPDF = async () => {
     const response = await FileService.getFiles();
-    const filteredResponse = role === 1 ? response : response.filter((item) => item.id_clase == id);
+    const filteredResponse = role === 3 ? response : response.filter((item) => item.id_clase == id);
     setPdfList(filteredResponse);
   }
 
