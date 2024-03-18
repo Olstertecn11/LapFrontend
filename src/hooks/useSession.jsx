@@ -7,36 +7,31 @@ import StoreManagment from '../helpers/StorageManagement.js';
 const useSession = () => {
   const history = useNavigate();
 
-  const verifySession = async () => {
-    try {
-      const userObject = JSON.parse(localStorage.getItem('session'));
-      if (!userObject) {
-        history('/');
-        return;
-      }
-
-      const { idUsr, token } = userObject;
-      const response = await authService.hasSession(idUsr, token);
-      if (!response.exist) {
-        history('/');
-      }
-      else {
-        console.log('is logged');
-      }
-    } catch (error) {
-      console.error('Error al verificar la sesión:', error);
-    }
-  };
-
   useEffect(() => {
-    const sessionData = StoreManagment.getObject('session');
-    if (sessionData !== null) {
-      history('/')
-    }
-    verifySession();
-  }, []);
+    const verifySession = async () => {
+      try {
+        const sessionData = StoreManagment.getObject('session');
+        if (!sessionData) {
+          history('/');
+          return;
+        }
 
-  return verifySession;
+        const { idUsr, token } = sessionData;
+        const response = await authService.hasSession(idUsr, token);
+        if (!response.exist) {
+          history('/');
+        } else {
+          console.log('Usuario autenticado');
+        }
+      } catch (error) {
+        console.error('Error al verificar la sesión:', error);
+      }
+    };
+
+    verifySession();
+  }, [history]);
+
+  return null; // No necesitas devolver nada de este hook
 };
 
 export default useSession;

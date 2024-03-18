@@ -11,6 +11,7 @@ import NotFound from "./views/NotFound";
 import CoursePrograms from "./views/CoursePrograms";
 import ClassFolder from "./views/ClassFolder";
 import AdminDashboard from "./views/AdminDashboard";
+import Profile from "./views/Profile";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/Clase/:id" element={<Layout Component={ClassFolder} />} />
           <Route path="/Admin/" element={<Layout Component={AdminDashboard} />} />
           <Route path="*" element={<Layout Component={NotFound} />} />
+          <Route path="/Perfil" element={<Layout Component={Profile} />} />
         </Routes>
       </BrowserRouter>
     </>

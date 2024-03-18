@@ -1,8 +1,9 @@
 import SideDrawer from "./SideDrawer";
 import { useRef } from "react";
-import { useDisclosure } from "@chakra-ui/react";
+import { Image, useDisclosure } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import iasd_icon from './../assets/blueLogoIASD.png';
+
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -18,8 +19,13 @@ const Navbar = () => {
 
         <div className="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
           <form className="form-inline  my-2 my-lg-0 ml-auto">
-            <button className="btn  my-2 my-sm-0" style={{ color: 'gray' }} type="button"><i className="fa-solid fa-gear"></i> </button>
-            <button ref={btnRef} onClick={onOpen} style={{ color: 'gray' }} className="btn  ml-2 my-2 my-sm-0" type="button"><i className="fa-solid fa-bars"></i> </button>
+            <Link to='/Perfil' className="btn  my-2 my-sm-0" style={{ color: 'gray' }} type="button"><i className="fa-solid fa-gear"></i> </Link>
+            <button ref={btnRef} onClick={onOpen} style={{ color: 'gray' }} className="btn  ml-2 my-2 my-sm-0" type="button"><Image
+              borderRadius='full'
+              boxSize='40px'
+              src='https://bit.ly/dan-abramov'
+              alt='Dan Abramov'
+            /> </button>
           </form>
         </div>
       </nav>
