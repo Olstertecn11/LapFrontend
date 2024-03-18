@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../services/auth/AuthService";
+import StoreManagment from '../helpers/StorageManagement.js';
 
 const useSession = () => {
   const history = useNavigate();
@@ -28,6 +29,10 @@ const useSession = () => {
   };
 
   useEffect(() => {
+    const sessionData = StoreManagment.getObject('session');
+    if (sessionData !== null) {
+      history('/')
+    }
     verifySession();
   }, []);
 

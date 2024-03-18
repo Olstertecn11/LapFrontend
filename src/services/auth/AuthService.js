@@ -34,7 +34,19 @@ const AuthService = {
         "Authorization": "Bearer <token>" // Aquí deberías incluir tu token de autorización si lo tienes
       }
     }).then(res => res.data).catch(err => console.log(err));
+  },
+  hasActiveSession: async (idUser) => {
+    return axios.get(getApiUrl('/auth/session'), {
+      params: {
+        idUser: idUser
+      },
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer <token>"
+      }
+    }).then(res => res.data).catch(err => console.log(err));
   }
+
 }
 
 export default AuthService;

@@ -2,10 +2,10 @@ import './styles/Login.css';
 import logoLAP from './../assets/logoLAP.png';
 import loginBackground from '../assets/loginBackground.jpg';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AuthService from './../services/auth/AuthService';
-import { Store } from 'react-notifications-component';
 import Swal from 'sweetalert2'
+import StoreManagment from '../helpers/StorageManagement.js';
 
 
 const Login = () => {
@@ -62,6 +62,24 @@ const Login = () => {
     }
     setUser(empty_user);
   }
+
+
+
+  const checkActiveSession = async (id) => {
+    const response = await AuthService.hasActiveSession(id);
+    const { exist } = response;
+    if (exist) {
+      history('/Dashboard');
+    }
+  }
+
+  useEffect(() => {
+    const sessionData = StoreManagment.getObject('session');
+    if (sessionData !== null) {
+      const { idUsr } = sessionData;
+      checkActiveSession(idUsr);
+    }
+  }, [])
 
 
 
