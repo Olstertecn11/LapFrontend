@@ -28,6 +28,26 @@ const UserService = {
         "Authorization": "Bearer <token>"
       }
     }).then(res => res.data.data).catch(err => console.log(err));
+  },
+  getAttributes: async (idUser) => {
+    return axios.get(getApiUrl('/user/profile'), {
+      params: {
+        idUser: idUser
+      },
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer <token>"
+      }
+    }).then(res => res.data.data).catch(err => console.log(err));
+  },
+  updateAttributes: async (idUser, name, surname, dpi, phone, img) => {
+    return axios.post(getApiUrl('/user/profile'), { name, surname, id: idUser, dpi, phone, img }, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer <token>"
+      }
+    }).then(res => res.data).catch(err => console.log(err));
+
   }
 }
 
