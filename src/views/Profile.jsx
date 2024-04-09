@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import UserService from '../services/user/UserService';
 import profileImg from '../assets/profile.png';
 import Notify from '../components/Notify';
+import useSession from '../hooks/useSession';
 
 
 
@@ -29,6 +30,8 @@ const Profile = () => {
   });
 
 
+
+
   const handleButtonClick = () => {
     document.getElementById("fileInput").click();
   };
@@ -47,10 +50,17 @@ const Profile = () => {
 
 
   const saveChanges = async () => {
+    var userSession = JSON.parse(localStorage.getItem('session'));
+    userSession.img = profile.usr_image;
+    localStorage.setItem("session", JSON.stringify(userSession));
     const response = await UserService.updateAttributes(idUsr, profile.usr_name, profile.usr_surname, profile.usr_dpi, profile.usr_phone, profile.usr_image)
     const { code, message } = response;
     if (code === 1) {
-      Notify('')
+      Notify('Perfil actualizado correctamente', 'Operacion Exitosa', "success");
+      window.location.reload();
+    }
+    else {
+      Notify('Error de Operación', message, 'error');
     }
     console.log(response);
   }

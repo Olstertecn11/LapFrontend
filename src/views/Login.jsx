@@ -31,11 +31,13 @@ const Login = () => {
     const idUsr = response.id_usr;
     const role = response.credentials;
     const username = response.username;
+    const img = response.img;
     const sessionData = {
       idUsr,
       token,
       role,
-      username
+      username,
+      img
     };
     localStorage.setItem('session', JSON.stringify(sessionData));
     if (code == 3) {

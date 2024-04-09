@@ -1,13 +1,28 @@
 import SideDrawer from "./SideDrawer";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { Image, useDisclosure } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
 import iasd_icon from './../assets/blueLogoIASD.png';
+import StoreManagment from '../helpers/StorageManagement';
+import { useEffect } from "react";
 
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const [profileImage, setProfileImage] = useState('https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png');
   const btnRef = useRef()
+  const history = useNavigate();
+
+
+  useEffect(() => {
+    try {
+      const { img } = StoreManagment.getObject('session');
+      setProfileImage(img);
+    } catch (error) {
+      console.log('errorrrr');
+    }
+  }, []);
+
 
 
 
@@ -20,12 +35,15 @@ const Navbar = () => {
         <div className="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
           <form className="form-inline  my-2 my-lg-0 ml-auto">
             <Link to='/Perfil' className="btn  my-2 my-sm-0" style={{ color: 'gray' }} type="button"><i className="fa-solid fa-gear"></i> </Link>
-            <button ref={btnRef} onClick={onOpen} style={{ color: 'gray' }} className="btn  ml-2 my-2 my-sm-0" type="button"><Image
-              borderRadius='full'
-              boxSize='40px'
-              src='https://bit.ly/dan-abramov'
-              alt='Dan Abramov'
-            /> </button>
+            <button ref={btnRef} onClick={onOpen} style={{ color: 'gray' }} className="btn  ml-2 my-2 my-sm-0" type="button">
+              < Image
+                borderRadius='full'
+                boxSize='40px'
+                objectFit='cover'
+                src={profileImage}
+                alt='Dan Abramov'
+              />
+            </button>
           </form>
         </div>
       </nav>

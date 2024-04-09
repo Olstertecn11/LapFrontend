@@ -11,6 +11,7 @@ const useSession = () => {
     const verifySession = async () => {
       try {
         const sessionData = StoreManagment.getObject('session');
+        console.log(sessionData);
         if (!sessionData) {
           history('/');
           return;

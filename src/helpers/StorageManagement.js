@@ -7,9 +7,15 @@ Store.saveObject = (_key, object) => {
   localStorage.setItem(_key, JSON.stringify(object));
 }
 
+
 Store.getObject = (_key) => {
-  return JSON.parse(localStorage.getItem(_key));
+  const item = localStorage.getItem(_key);
+  if (item === null) {
+    return null;
+  }
+  return JSON.parse(item);
 }
+
 
 
 export default Store;

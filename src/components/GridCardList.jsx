@@ -29,6 +29,10 @@ const GridChakraCardList = ({ callback }) => {
 
   const { role } = StorageManagement.getObject('session') ? StorageManagement.getObject('session') : 0;
 
+
+
+
+
   return (
     <Box p={4}>
 
