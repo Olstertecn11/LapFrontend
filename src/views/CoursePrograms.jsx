@@ -13,33 +13,22 @@ const CoursePrograms = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const history = useNavigate();
   const [data, setData] = useState([]);
-  const [service, setService] = useState(null);
   const { idUsr, role, username } = StoreManagment.getObject('session');
+  const service = role === 3 ? ClassService.getAll : () => ClassService.getByTeacher(idUsr);
 
 
+
+  const fetchData = async () => {
+    if (!service) return;
+    const response = await service();
+    console.log(response);
+    setData(response.data);
+  };
 
 
   useEffect(() => {
-    const getService = () => {
-      if (role === 3) {
-        return ClassService.getAll;
-      } else {
-        return () => ClassService.getByTeacher(idUsr);
-      }
-    };
-
-    const service = getService();
-    setService(service);
-
-    const fetchData = async () => {
-      if (!service) return;
-      const response = await service();
-      console.log(response);
-      setData(response.data);
-    };
-
     fetchData();
-  }, [idUsr, role]);
+  }, []);
 
 
   const handleClick = (_id) => {
@@ -53,7 +42,7 @@ const CoursePrograms = () => {
   return (
     <div>
       <div className="controls-container" style={{ marginLeft: '6vw' }}>
-        <ControlBox refArr={[btnRef]} handleArr={[onOpen]} />
+        <ControlBox refArr={[btnRef]} handleArr={[onOpen]} data={data} updateData={fetchData} deleteData={ClassService.delete} showMore={true} />
       </div>
       <div className="container p-2">
         <div className="row mb-0 mt-0 ml-2">

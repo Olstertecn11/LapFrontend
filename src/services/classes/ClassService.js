@@ -31,6 +31,14 @@ const ClassService = {
         "Authorization": "Bearer <token>"
       }
     }).then(res => res.data).catch(err => console.log(err));
+  },
+  delete: async (Id) => {
+    return axios.delete(apiUrl + `&id=${Id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer <token>"
+      }
+    }).then(res => res.data).catch(err => console.log(err));
   }
 }
 

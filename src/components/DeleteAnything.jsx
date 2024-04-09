@@ -10,7 +10,7 @@ import {
 
 import Swal from 'sweetalert2'
 
-const DeleteAnything = ({ data, Service, event }) => {
+const DeleteAnything = ({ data, Service, event, showMore = false }) => {
 
   console.log(data[0]);
 
@@ -52,7 +52,7 @@ const DeleteAnything = ({ data, Service, event }) => {
             colorScheme='red'
             fontSize='lg'
           >
-            <TagLabel>{Object.entries(item)[1][1]}</TagLabel>
+            <TagLabel>{Object.entries(item)[1][1]}  {showMore ? ' -- ' + Object.entries(item)[2][1] : ''}{showMore}</TagLabel>
             <TagCloseButton onClick={() => handleClick(Object.entries(item)[0][1])} />
           </Tag>
         ))}

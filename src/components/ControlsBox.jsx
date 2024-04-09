@@ -6,7 +6,7 @@ import DeleteAnything from "./DeleteAnything";
 
 
 
-const ControlBox = ({ refArr, handleArr, data, updateData, deleteData }) => {
+const ControlBox = ({ refArr, handleArr, data, updateData, deleteData, showMore }) => {
 
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -16,6 +16,8 @@ const ControlBox = ({ refArr, handleArr, data, updateData, deleteData }) => {
     onClose();
   }
 
+  console.log('show more');
+  console.log(showMore);
 
 
   return (
@@ -30,7 +32,7 @@ const ControlBox = ({ refArr, handleArr, data, updateData, deleteData }) => {
         </div>
       </div>
       {data && data.length !== 0 ? (
-        < OverlayModal size="xl" type={2} title={'Eliminar Elemento'} onOpen={onOpen} onClose={onClose} isOpen={isOpen} Component={() => <DeleteAnything Service={deleteData} data={data} event={closeEvent} />} />
+        < OverlayModal size="xl" type={2} title={'Eliminar Elemento'} onOpen={onOpen} onClose={onClose} isOpen={isOpen} Component={() => <DeleteAnything Service={deleteData} data={data} event={closeEvent} showMore={showMore} />} />
       ) :
         ''
       }

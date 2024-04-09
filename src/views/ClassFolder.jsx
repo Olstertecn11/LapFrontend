@@ -18,8 +18,6 @@ const ClassFolder = () => {
   const [pdfSelected, setPdfSelected] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { isOpen: isOpenS, onOpen: onOpenS, onClose: onCloseS } = useDisclosure()
-  console.log(isOpenS);
-  console.log(isOpen);
   const { id } = useParams();
   const { role } = StoreManagment.getObject('session');
 
