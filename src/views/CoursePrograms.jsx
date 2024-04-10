@@ -14,7 +14,7 @@ const CoursePrograms = () => {
   const history = useNavigate();
   const [data, setData] = useState([]);
   const { idUsr, role, username } = StoreManagment.getObject('session');
-  const service = role === 3 ? ClassService.getAll : () => ClassService.getByTeacher(idUsr);
+  const service = role === 1 ? ClassService.getAll : () => ClassService.getByTeacher(idUsr);
 
 
 
