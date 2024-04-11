@@ -6,6 +6,7 @@ import NewUser from '../layouts/NewUser';
 import NewSubject from '../layouts/NewSubject';
 import NewDegree from '../layouts/NewDegree';
 import DegreeService from "../services/degree/DegreeService";
+import './styles/adminDash.css'
 
 const AdminDashboard = () => {
 

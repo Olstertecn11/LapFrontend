@@ -9,7 +9,8 @@ import { useEffect } from "react";
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [profileImage, setProfileImage] = useState('https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png');
+  const emptyIMG = 'https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png';
+  const [profileImage, setProfileImage] = useState(emptyIMG);
   const btnRef = useRef()
   const history = useNavigate();
 
@@ -17,7 +18,7 @@ const Navbar = () => {
   useEffect(() => {
     try {
       const { img } = StoreManagment.getObject('session');
-      setProfileImage(img);
+      if (img) setProfileImage(img);
     } catch (error) {
       console.log('errorrrr');
     }
