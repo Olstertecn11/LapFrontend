@@ -69,6 +69,33 @@
   background: #2A71A8;
 }
 
+
+
+
+.buttons-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 2vw;
+}
+
+.buttons-row .btn {
+  margin: 0px !important;
+  margin-left: 1vw !important;
+}
+
+.btn-register {
+  color: white;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  border-radius: 70vw;
+}
+
+.btn-register:hover {
+  color: #155572;
+  background: white;
+  /* font-weight: bold; */
+}
+
 .logn-form-column .card .form-group label {
   color: white;
   font-weight: bold;

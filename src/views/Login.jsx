@@ -119,7 +119,10 @@ const Login = () => {
                 />
               </div>
               <Link className='text-right text-white  txt-link'>Olvidé mi contraseña</Link>
-              <button className='btn btn-blue mt-4' onClick={sendForm}>Ingresar</button>
+              <div className="row buttons-row">
+                <button className='btn btn-blue mt-4' onClick={sendForm}>Ingresar</button>
+                <button className='btn btn-register mt-4' onClick={() => history('/Registro')} >Registro</button>
+              </div>
             </div>
           </div>
         </div>

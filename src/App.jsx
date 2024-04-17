@@ -12,6 +12,7 @@ import CoursePrograms from "./views/CoursePrograms";
 import ClassFolder from "./views/ClassFolder";
 import AdminDashboard from "./views/AdminDashboard";
 import Profile from "./views/Profile";
+import Register from "./views/Register";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/Admin/" element={<Layout Component={AdminDashboard} />} />
           <Route path="*" element={<Layout Component={NotFound} />} />
           <Route path="/Perfil" element={<Layout Component={Profile} />} />
+          <Route path="/Registro" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </>
