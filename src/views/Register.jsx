@@ -1,7 +1,7 @@
 import './styles/register.css';
 const Register = () => {
   return (
-    <div class="register-container">
+    <div className="register-container">
       <img src="https://pbs.twimg.com/media/ESruSQ7XsAA36Cb?format=jpg&name=large" alt="" />
       <div class="container">
         <div class="row">

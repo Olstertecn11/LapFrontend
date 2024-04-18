@@ -13,6 +13,7 @@ const AdminSection = ({ margin = '2vw', title, ServiceGet, ServiceDelete, titleN
   const btnRef = useRef()
 
   const { data, isPending, error, updateData } = useFetch(ServiceGet, []);
+  console.log(title + "--" + data);
 
 
   return (
