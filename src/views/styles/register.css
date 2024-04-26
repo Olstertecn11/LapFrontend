@@ -9,7 +9,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  filter: brightness(0.6);
+  filter: brightness(0.5);
   z-index: -1;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .register-container .container {
-  padding-top: 14vw;
+  padding-top: 8vw;
 }
 
 .btn-white {
