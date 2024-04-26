@@ -1,5 +1,6 @@
 import './styles/register.css';
 import { useState } from 'react';
+import RegisterService from '../services/register/RegisterService';
 const Register = () => {
 
 
@@ -17,11 +18,12 @@ const Register = () => {
   }
 
 
-  const registerUser = () => {
+  const registerUser = async () => {
     if (registerForm.password !== registerForm.confirmedPass || registerForm.email.length === 0 || registerForm.confirmedPass.length === 0 || registerForm.password === 0) {
       alert("No match"); return;
     }
-    console.log(registerForm);
+    const response = await RegisterService.register(registerForm);
+    console.log(response);
   }
 
   return (
