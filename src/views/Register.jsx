@@ -3,9 +3,9 @@ import { useState } from 'react';
 import RegisterService from '../services/register/RegisterService';
 import { Link } from 'react-router-dom';
 import Notify from '../components/Notify';
+
+
 const Register = () => {
-
-
 
   const emptyForm = { email: '', password: '', confirmedPass: '', accessCode: '' };
   const [registerForm, setRegisterForm] = useState(emptyForm)
