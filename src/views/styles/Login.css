@@ -129,3 +129,40 @@
   font-size: 0.7vw;
   width: 80%;
 }
+
+@media screen and (max-width: 991px) and (orientation:portrait) {
+  .logn-image-column img {
+    height: 50vw;
+  }
+
+  .logn-form-column {
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+
+  .logn-form-column .card {
+    padding: 10vw 0vw;
+    border-radius: 18px;
+  }
+
+  .logn-form-column .card .form-group label {
+    font-size: 3vw;
+  }
+
+  .logn-form-column .card .txt-link {
+    font-size: 3vw;
+  }
+
+  .buttons-row {
+    margin-top: 5vw;
+  }
+
+  .buttons-row .btn {
+    font-size: 3vw;
+    padding: 1vw 4vw;
+  }
+
+  .card-body .form-group .form-control {
+    font-size: 3vw;
+  }
+}
