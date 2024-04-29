@@ -1,6 +1,8 @@
 import './styles/register.css';
 import { useState } from 'react';
 import RegisterService from '../services/register/RegisterService';
+import { Link } from 'react-router-dom';
+import Notify from '../components/Notify';
 const Register = () => {
 
 
@@ -24,6 +26,15 @@ const Register = () => {
     }
     const response = await RegisterService.register(registerForm);
     console.log(response);
+    if (response.status) {
+      Notify('Éxito', 'Cuenta creada correctamente', 'success');
+      setRegisterForm(emptyForm);
+    }
+    else {
+      Notify('Error', 'Error al crear la cuenta', 'error');
+      setRegisterForm(emptyForm);
+    }
+    setRegisterForm(emptyForm);
   }
 
   return (
@@ -35,18 +46,19 @@ const Register = () => {
             <div className="card p-4 register-card">
               <h6 className='text-white text-center'>Formulario de registro</h6>
               <div className="form-group mt-4">
-                <input type="email" className='form-control' placeholder='Correo' name="email" onChange={handleChange} />
+                <input type="email" className='form-control' placeholder='Correo' name="email" onChange={handleChange} value={registerForm.email} />
               </div>
               <div className="form-group mt-4">
-                <input type="password" className='form-control' placeholder='Contraseña' name="password" onChange={handleChange} />
+                <input type="password" className='form-control' placeholder='Contraseña' name="password" onChange={handleChange} value={registerForm.password} />
               </div>
               <div className="form-group mt-4">
-                <input type="password" className='form-control' placeholder='Confirmar Contraseña' name="confirmedPass" onChange={handleChange} />
+                <input type="password" className='form-control' placeholder='Confirmar Contraseña' name="confirmedPass" onChange={handleChange} value={registerForm.confirmedPass} />
               </div>
               <div className="form-group mt-4">
-                <input type="text" className='form-control' placeholder='Codigo de acceso' name="accessCode" onChange={handleChange} />
+                <input type="text" className='form-control' placeholder='Codigo de acceso' name="accessCode" onChange={handleChange} value={registerForm.accessCode} />
               </div>
               <button className='btn btn-white mt-2' onClick={registerUser}>Registrar</button>
+              <Link className='text-info' to='/'>Login</Link>
             </div>
           </div>
         </div>

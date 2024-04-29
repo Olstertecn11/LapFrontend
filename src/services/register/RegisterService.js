@@ -6,7 +6,8 @@ const RegisterService = {
   register: async (formData) => {
     return axios.post(getApiUrl('/register'), formData, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        "Content-Type": "application/json",
+        "Authorization": "Bearer <token>"
       }
     });
   }
