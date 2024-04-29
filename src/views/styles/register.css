@@ -44,3 +44,17 @@
   width: 40%;
   margin: auto;
 }
+
+
+
+.btn-back-login:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.btn-back-login {
+  color: white;
+  font-size: 0.7vw;
+  text-align: center;
+  margin-top: 2vw;
+}

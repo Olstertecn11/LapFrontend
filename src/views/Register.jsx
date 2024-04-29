@@ -58,7 +58,7 @@ const Register = () => {
                 <input type="text" className='form-control' placeholder='Codigo de acceso' name="accessCode" onChange={handleChange} value={registerForm.accessCode} />
               </div>
               <button className='btn btn-white mt-2' onClick={registerUser}>Registrar</button>
-              <Link className='text-info' to='/'>Login</Link>
+              <Link className='btn-back-login' to='/'>Volver al login</Link>
             </div>
           </div>
         </div>
