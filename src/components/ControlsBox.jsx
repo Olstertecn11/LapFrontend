@@ -10,7 +10,6 @@ import '../styles/components/ControlBox.css';
 const ControlBox = ({ refArr, handleArr, data, updateData, deleteData, showMore }) => {
 
 
-  console.log(handleArr);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const closeEvent = () => {
