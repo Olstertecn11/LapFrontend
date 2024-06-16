@@ -62,7 +62,6 @@ const Profile = () => {
     else {
       Notify('Error de Operación', message, 'error');
     }
-    console.log(response);
   }
 
   const handleImageChange = (event) => {

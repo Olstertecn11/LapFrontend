@@ -25,7 +25,6 @@ const Register = () => {
       alert("No match"); return;
     }
     const response = await RegisterService.register(registerForm);
-    console.log(response);
     if (response.status) {
       Notify('Éxito', 'Cuenta creada correctamente', 'success');
       setRegisterForm(emptyForm);

@@ -21,10 +21,8 @@ const NewDegree = ({ event, updateData }) => {
   }
 
   const saveData = async () => {
-    console.log(degree);
     event();
     const response = await DegreeService.create(degree);
-    console.log(response);
     if (response.status) {
       Swal.fire({
         title: "Operacion Exitosa",

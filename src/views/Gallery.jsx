@@ -16,7 +16,6 @@ const GalleryEvents = () => {
   const btnRef = useRef()
   const history = useNavigate();
   const { data, isPending, error, updateData } = useFetch(ActivityService.getAll, []);
-  console.log(data);
 
   const redirectURL = (url) => {
     history(url);

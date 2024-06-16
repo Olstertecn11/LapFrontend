@@ -35,7 +35,6 @@ function UploadImage({ event, updateData }) {
     const files = e.dataTransfer.files;
     if (files.length > 0) {
       const file = files[0];
-      console.log('Dropped file:', file);
       const reader = new FileReader();
       reader.onload = () => {
         setImagePreview(reader.result);
@@ -46,8 +45,6 @@ function UploadImage({ event, updateData }) {
 
   const handleSave = async () => {
     if (imagePreview) {
-      console.log(imagePreview);
-      console.log(id);
       const response = await ActivityService.saveImage({ idActivity: id, img: imagePreview })
       if (event) event();
       if (updateData) updateData();

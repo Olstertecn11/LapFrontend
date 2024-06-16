@@ -23,7 +23,6 @@ const AuthService = {
     }
   },
   hasSession: async (idUser, token) => {
-    console.log(idUser);
     return axios.get(apiUrl, {
       params: {
         idUser: idUser,

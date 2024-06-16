@@ -5,29 +5,30 @@ import { useRef } from 'react';
 import useFetch from '../hooks/useFetch';
 import Sidebar from '../components/Sidebar';
 import DataTable from "../components/DataTable";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 
 const AdminSection = ({ margin = '2vw', title, ServiceGet, ServiceDelete, titleNew, ComponentNew }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
 
-  const { data, isPending, error, updateData } = useFetch(ServiceGet, []);
-  console.log(title + "--" + data);
+  const { data, isPending, error, updateData } = useFetch(ServiceGet, [ServiceGet]);
+
 
 
   return (
     <div style={{ marginTop: margin }}>
-      <div className="row">
-        <div className="col-md-6">
-          <div className="card">
-            <div className="pl-4 pt-4">
+      <div className="card p-4">
+        <div className="row">
+          <div className="col-md-6">
+            <div className="pl-0 ml-0 pt-4">
               <Text
-                className="text-center text-white"
+                className="text-center"
                 ml={4}
                 textTransform="uppercase"
                 width={'60%'}
-                bg={useColorModeValue('blue.400', 'blue.700')}
+                bg='#dae9f7'
+                color='#408493'
                 px={3}
                 py={1}
                 fontSize="sm"
@@ -36,16 +37,19 @@ const AdminSection = ({ margin = '2vw', title, ServiceGet, ServiceDelete, titleN
                 {title}
               </Text>
             </div>
-            <ControlBox refArr={[btnRef]} handleArr={[onOpen]} data={data} updateData={updateData} deleteData={ServiceDelete} />
+            <div className="container ml-p pl-0">
+              <ControlBox refArr={[btnRef]} handleArr={[onOpen]} data={data} updateData={updateData} deleteData={ServiceDelete} />
+            </div>
             <Sidebar updateData={updateData} Component={ComponentNew} onOpen={onClose} onClose={onClose} isOpen={isOpen} title={titleNew} btnRef={btnRef} />
           </div>
         </div>
-        <div className="col-md-6 mx-auto">
-          {data && data ? (
-
-            <DataTable data={data} />
-          ) : ''
-          }
+        <div className="row mt-4">
+          <div className="col-md-12 ">
+            {data && data ? (
+              <DataTable data={data} />
+            ) : ''
+            }
+          </div>
         </div>
       </div>
     </div>

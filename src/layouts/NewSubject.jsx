@@ -21,7 +21,6 @@ const NewSubject = ({ event, updateData }) => {
   }
 
   const saveData = async () => {
-    console.log(subject);
     event();
     const response = await SubjectService.create(subject);
     console.log(response);

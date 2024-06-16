@@ -32,7 +32,6 @@ const NewUser = ({ event, updateData }) => {
     }
     event();
     const response = await UserService.create(user);
-    console.log(response);
     setUser(emptyUser);
     if (response.status) {
       Notify("Operacion Exitosa", "Evento creado correctamente", "success");

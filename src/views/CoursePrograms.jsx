@@ -34,7 +34,6 @@ const CoursePrograms = () => {
   const fetchData = async () => {
     if (!service) return;
     const response = await service();
-    console.log(response);
     setOriginalData(response.data);
     setData(response.data);
   };

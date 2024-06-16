@@ -17,7 +17,6 @@ const GalleryImages = () => {
 
   const fetchData = async () => {
     const response = await ActivityService.getImagesFromActivity(id);
-    console.log(response);
     setData(response);
   }
 

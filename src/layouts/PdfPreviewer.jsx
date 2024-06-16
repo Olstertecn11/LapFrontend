@@ -13,7 +13,6 @@ const PdfPreviewer = ({ pdf }) => {
 
 
 
-  console.log(pdf);
   return (
     <div>
       {

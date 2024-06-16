@@ -10,7 +10,6 @@ const NewClass = ({ event, updateData }) => {
 
 
   const { idUsr } = StoreManagment.getObject('session');
-  console.log(idUsr);
   const emptyClass = { degree: '', subject: '', teacher: idUsr }
   const [newClass, setNewClass] = useState(emptyClass);
 
@@ -34,7 +33,6 @@ const NewClass = ({ event, updateData }) => {
 
   const saveData = async () => {
     event();
-    console.log(newClass);
     const response = await ClassService.create(newClass);
     if (response.status) {
       Swal.fire({

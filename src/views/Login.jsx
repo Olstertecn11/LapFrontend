@@ -25,7 +25,6 @@ const Login = () => {
 
   const sendForm = async () => {
     const response = await AuthService.login(user);
-    console.log(response);
     const code = response.result;
     const token = response.token_val;
     const idUsr = response.id_usr;

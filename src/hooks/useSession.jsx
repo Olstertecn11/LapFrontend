@@ -11,7 +11,6 @@ const useSession = () => {
     const verifySession = async () => {
       try {
         const sessionData = StoreManagment.getObject('session');
-        console.log(sessionData);
         if (!sessionData) {
           history('/');
           return;
@@ -22,7 +21,6 @@ const useSession = () => {
         if (!response.exist) {
           history('/');
         } else {
-          console.log('Usuario autenticado');
         }
       } catch (error) {
         console.error('Error al verificar la sesión:', error);

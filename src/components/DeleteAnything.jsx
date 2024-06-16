@@ -12,15 +12,12 @@ import Swal from 'sweetalert2'
 
 const DeleteAnything = ({ data, Service, event, showMore = false }) => {
 
-  console.log(data[0]);
 
 
 
   const handleClick = async (id) => {
     const response = await Service(id);
     event();
-    console.log('respnse');
-    console.log(response);
     if (response.code !== 0) {
       Swal.fire({
         title: 'Accion exitosa',
