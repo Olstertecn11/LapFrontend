@@ -1,12 +1,11 @@
 
 const DataTable = ({ data }) => {
   return (
-    <div className="table-responsive">
-      <table className="table table-striped">
+    <div className="table-responsive ">
+      <table className="table table-striped table-bordered">
         <thead>
           <tr>
             {Object.keys(data[0]).map(key => (
-              // removing refix
               <th key={key}>{key.substring(key.indexOf("_") + 1)}</th>
             ))}
           </tr>
