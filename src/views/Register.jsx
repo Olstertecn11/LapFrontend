@@ -43,7 +43,7 @@ const Register = () => {
         <div className="row">
           <div className="col-md-4 mx-auto">
             <div className="card p-4 register-card">
-              <h6 className='text-white text-center'>Formulario de registro</h6>
+              <h6 className='text-white text-center font-weight-bold'>Formulario de registro</h6>
               <div className="form-group mt-4">
                 <input type="email" className='form-control' placeholder='Correo' name="email" onChange={handleChange} value={registerForm.email} />
               </div>

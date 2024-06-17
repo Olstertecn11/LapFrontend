@@ -13,6 +13,7 @@ import ClassFolder from "./views/ClassFolder";
 import AdminDashboard from "./views/AdminDashboard";
 import Profile from "./views/Profile";
 import Register from "./views/Register";
+import './styles/global.css';
 
 function App() {
 

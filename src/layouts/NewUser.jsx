@@ -3,6 +3,7 @@ import { useState } from "react";
 import UserService from '../services/user/UserService';
 import Notify from "../components/Notify";
 import { BiShow, BiHide } from "react-icons/bi";
+import EmailHelper from "../helpers/EmailHelper";
 
 const NewUser = ({ event, updateData }) => {
   const [show, setShow] = useState(false)
@@ -33,6 +34,8 @@ const NewUser = ({ event, updateData }) => {
     event();
     const response = await UserService.create(user);
     setUser(emptyUser);
+    console.log(response);
+    EmailHelper.confirmAccount(response.newUser);
     if (response.status) {
       Notify("Operacion Exitosa", "Evento creado correctamente", "success");
       updateData();

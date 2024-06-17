@@ -40,9 +40,17 @@
 
 .btn-white {
   margin-top: 2vw;
-  background: white;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 0.5vw;
+  color: white;
   width: 40%;
   margin: auto;
+}
+
+.btn-white:hover {
+  background: white;
+  color: black;
 }
 
 
@@ -54,7 +62,7 @@
 
 .btn-back-login {
   color: white;
-  font-size: 0.7vw;
+  font-size: 0.9vw;
   text-align: center;
   margin-top: 2vw;
 }
