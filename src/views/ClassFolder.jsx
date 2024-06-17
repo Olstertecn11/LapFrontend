@@ -11,9 +11,11 @@ import ControlBox from "../components/ControlsBox";
 import Sidebar from "../components/Sidebar";
 import { useRef } from "react";
 import UploadFile from "../layouts/UploadFile";
+import { Text } from "@chakra-ui/react";
 
 
 const ClassFolder = () => {
+  const [pdfListOriginal, setPdfListOriginal] = useState([]);
   const [pdfList, setPdfList] = useState([]);
   const [pdfSelected, setPdfSelected] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -22,11 +24,23 @@ const ClassFolder = () => {
   const { role } = StoreManagment.getObject('session');
 
   const sideOpenRef = useRef();
+  const searchRef = useRef();
 
+  const handleSearch = () => {
+    const textToSearch = searchRef.current.value.toLowerCase();
+    if (textToSearch.length == 0) getPDF()
+    const filtered = pdfListOriginal.filter(item =>
+      Object.values(item).some(value =>
+        typeof value === 'string' && value.toLowerCase().includes(textToSearch)
+      )
+    );
+    setPdfList(filtered)
+  }
 
   const getPDF = async () => {
     const response = await FileService.getFiles();
     const filteredResponse = role === 1 ? response : response.filter((item) => item.id_clase == id);
+    setPdfListOriginal(filteredResponse);
     setPdfList(filteredResponse);
   }
 
@@ -42,19 +56,54 @@ const ClassFolder = () => {
   }
 
   return (
-    <div className="container p-4">
-      <ControlBox refArr={[sideOpenRef]} handleArr={[onOpenS]} data={pdfList} deleteData={FileService.delete} updateData={getPDF} />
-      <div className="row">
-        {
-          pdfList.map((item, index) => (
-            <div className="col-md-4" key={item.nombre + index}>
-              <PdfCard title={item.fecha_creacion.substring(0, 10)} stat={item.nombre} _class={'pdf-card'} click={() => selectPdf(item)} />
+    <div>
+      <div className="container mt-4">
+        <div className="row">
+          <div className="col-md-6">
+            <div className="d-flex flex-column flex-nowrap align-items-start">
+              <Text
+                fontWeight={'bold'}
+                as={'span'}
+                color={'blue.900'}
+                fontSize={'3xl'}
+                position={'relative'}
+                _after={{
+                  content: "''",
+                  width: 'full',
+                  height: '30%',
+                  position: 'absolute',
+                  bottom: 1,
+                  left: 0,
+                  bg: 'blue.100',
+                  zIndex: -1,
+                }}>
+                Archivos del docente
+              </Text>
+              <Text as={'span'} color={'blue.400'} ml={'2'} fontSize={'2xl'} fontWeight={'bold'} >
+                En esta sección podrá visualizar los archivos correspondientes al curso seleccionado
+              </Text>
             </div>
-          ))
-        }
+          </div>
+          <div className="col-md-6">
+            <div className="controls-container" style={{ marginLeft: '6vw' }}>
+              <ControlBox refArr={[sideOpenRef, null, searchRef]} handleArr={[onOpenS, handleSearch]} data={pdfListOriginal} deleteData={FileService.delete} updateData={getPDF} />
+            </div>
+          </div>
+        </div>
       </div>
-      <Sidebar updateData={getPDF} Component={UploadFile} onOpen={onOpenS} onClose={onCloseS} isOpen={isOpenS} title={'Subir Archivo'} btnRef={sideOpenRef} />
-      <OverlayModal title={pdfSelected ? pdfSelected.nombre : ''} onOpen={onOpen} onClose={onClose} isOpen={isOpen} Component={() => <PdfPreviewer pdf={pdfSelected} />} />
+      <div className="container p-4">
+        <div className="row">
+          {
+            pdfList.map((item, index) => (
+              <div className="col-md-4" key={item.nombre + index}>
+                <PdfCard title={item.fecha_creacion.substring(0, 10)} stat={item.nombre} _class={'pdf-card'} click={() => selectPdf(item)} />
+              </div>
+            ))
+          }
+        </div>
+        <Sidebar updateData={getPDF} Component={UploadFile} onOpen={onOpenS} onClose={onCloseS} isOpen={isOpenS} title={'Subir Archivo'} btnRef={sideOpenRef} />
+        <OverlayModal title={pdfSelected ? pdfSelected.nombre : ''} onOpen={onOpen} onClose={onClose} isOpen={isOpen} Component={() => <PdfPreviewer pdf={pdfSelected} />} />
+      </div>
     </div>
   );
 }

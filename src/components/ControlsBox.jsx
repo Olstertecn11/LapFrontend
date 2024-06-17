@@ -2,6 +2,7 @@
 import { Button, useDisclosure } from "@chakra-ui/react";
 import OverlayModal from "./OverlayModal";
 import DeleteAnything from "./DeleteAnything";
+import '../styles/components/ControlBox.css';
 
 
 
@@ -9,6 +10,7 @@ import DeleteAnything from "./DeleteAnything";
 const ControlBox = ({ refArr, handleArr, data, updateData, deleteData, showMore }) => {
 
 
+  console.log(handleArr);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const closeEvent = () => {
@@ -16,19 +18,20 @@ const ControlBox = ({ refArr, handleArr, data, updateData, deleteData, showMore 
     onClose();
   }
 
-  console.log('show more');
-  console.log(showMore);
 
+  const handleKey = (e) => {
+    handleArr[1]();
+
+  }
 
   return (
-    <div className="row ml-0 mr-0">
-      <div className="col-md-4 mr-auto ml-4 mt-4">
-        <div className="card shadow p-3 mb-5 rounded" style={{ height: '15vh', width: '25vw', background: '#4e6e8a24 ' }}>
-          <div className="row">
-            <Button ref={refArr[0]} onClick={handleArr[0]} colorScheme={'green'} className='w-15 mr-auto ml-4 mt-2' > <i className='fa-solid fa-plus'></i></Button>
-            <Button colorScheme={'red'} onClick={onOpen} className='w-15 mr-auto ml-4 mt-2' > <i className='fa-solid fa-trash'></i></Button>
-            <Button colorScheme={'blue'} onClick={handleArr[2]} className='w-15 mr-auto ml-4 mt-2' > <i className='fa-solid fa-magnifying-glass'></i></Button>
-          </div>
+    <div className="">
+      <div className="card shadow p-4 mb-5 rounded" style={{ height: '15vh', width: '35vw', background: '#4e6e8a24 ' }}>
+        <div className="control-buttons-container">
+          <input ref={refArr[2]} type="text" onKeyDown={handleKey} className="form-control search-control" placeholder="Buscar..." />
+          <Button ref={refArr[1]} onClick={handleArr[1]} colorScheme={'blue'} className='w-15 ' > <i className='fa-solid fa-magnifying-glass'></i></Button>
+          <Button ref={refArr[0]} onClick={handleArr[0]} colorScheme={'green'} className='w-15 ' > <i className='fa-solid fa-plus'></i></Button>
+          <Button colorScheme={'red'} onClick={onOpen} className='w-15' > <i className='fa-solid fa-trash'></i></Button>
         </div>
       </div>
       {data && data.length !== 0 ? (

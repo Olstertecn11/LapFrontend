@@ -12,9 +12,22 @@ import NewClass from "../layouts/NewClass";
 const CoursePrograms = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const history = useNavigate();
+  const [originalData, setOriginalData] = useState([]);
   const [data, setData] = useState([]);
   const { idUsr, role, username } = StoreManagment.getObject('session');
   const service = role === 1 ? ClassService.getAll : () => ClassService.getByTeacher(idUsr);
+
+
+  const handleSearch = () => {
+    const textToSearch = searchRef.current.value.toLowerCase();
+    if (textToSearch.length == 0) fetchData()
+    const filtered = originalData.filter(item =>
+      Object.values(item).some(value =>
+        typeof value === 'string' && value.toLowerCase().includes(textToSearch)
+      )
+    );
+    setData(filtered)
+  }
 
 
 
@@ -22,6 +35,7 @@ const CoursePrograms = () => {
     if (!service) return;
     const response = await service();
     console.log(response);
+    setOriginalData(response.data);
     setData(response.data);
   };
 
@@ -37,40 +51,47 @@ const CoursePrograms = () => {
 
 
   const btnRef = useRef(null);
+  const searchRef = useRef(null);
 
 
   return (
     <div>
-      <div className="controls-container" style={{ marginLeft: '6vw' }}>
-        <ControlBox refArr={[btnRef]} handleArr={[onOpen]} data={data} updateData={fetchData} deleteData={ClassService.delete} showMore={true} />
+      <div className="container mt-4">
+        <div className="row">
+          <div className="col-md-6">
+            <div className="d-flex flex-column flex-nowrap align-items-start">
+              <Text
+                fontWeight={'bold'}
+                as={'span'}
+                color={'blue.900'}
+                fontSize={'3xl'}
+                position={'relative'}
+                _after={{
+                  content: "''",
+                  width: 'full',
+                  height: '30%',
+                  position: 'absolute',
+                  bottom: 1,
+                  left: 0,
+                  bg: 'blue.100',
+                  zIndex: -1,
+                }}>
+                Hola {username}
+              </Text>
+              <Text as={'span'} color={'blue.400'} ml={'2'} fontSize={'2xl'} fontWeight={'bold'} >
+                En esta seccion podrás ver todos tus cursos
+              </Text>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="controls-container" style={{ marginLeft: '6vw' }}>
+              <ControlBox refArr={[btnRef, null, searchRef]} handleArr={[onOpen, handleSearch]} data={originalData} updateData={fetchData} deleteData={ClassService.delete} showMore={true} />
+            </div>
+          </div>
+        </div>
       </div>
       <div className="container p-2">
-        <div className="row mb-0 mt-0 ml-2">
-          <Text
-            fontWeight={'bold'}
-            as={'span'}
-            color={'blue.900'}
-            fontSize={'3xl'}
-            position={'relative'}
-            _after={{
-              content: "''",
-              width: 'full',
-              height: '30%',
-              position: 'absolute',
-              bottom: 1,
-              left: 0,
-              bg: 'blue.100',
-              zIndex: -1,
-            }}>
-            Hola {username}
-          </Text>
 
-        </div>
-        <div className="row mb-4 ml-0">
-          <Text as={'span'} color={'blue.400'} ml={'2'} fontSize={'2xl'} fontWeight={'bold'} >
-            En esta seccion podrás ver todos tus cursos
-          </Text>
-        </div>
 
         <div className="card-columns">
           {data && data.length != 0 ?

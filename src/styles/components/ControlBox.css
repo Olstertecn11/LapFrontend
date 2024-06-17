@@ -1,0 +1,12 @@
+.control-buttons-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: space-between;
+  justify-content: space-between;
+  margin-top: 0.5vw;
+}
+
+.control-buttons-container .search-control {
+  width: 60%;
+}

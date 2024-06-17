@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Image, useDisclosure } from "@chakra-ui/react";
 import iasd_icon from './../assets/blueLogoIASD.png';
+import './../styles/layouts/navbar.css';
 import StoreManagment from '../helpers/StorageManagement';
 import { useEffect } from "react";
 
@@ -30,7 +31,7 @@ const Navbar = () => {
 
   return (
     < div >
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg">
         <Link to='/Dashboard' className="navbar-brand d-flex align-items-center" href="#" style={{ color: '#408594' }}> <img width={30} className='mr-2' style={{ marginTop: '-4px' }} src={iasd_icon} alt="" /> <b>Liceo Adventista El Progreso</b></Link>
 
         <div className="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
