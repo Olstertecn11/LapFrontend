@@ -164,6 +164,10 @@ const Profile = () => {
           <div className="col-md-5 mx-auto">
             <div className="form-group">
               <div className="form-group">
+                <label htmlFor="">Nombre</label>
+                <input type="text" name="usr_name" value={profile.usr_name} onChange={handleChange} className={`form-control ${profile.usr_name.length > 0 ? 'is-valid' : 'is-invalid'}`} />
+              </div>
+              <div className="form-group">
                 <label htmlFor="">Apellido</label>
                 <input type="text" name="usr_surname" value={profile.usr_surname} onChange={handleChange} className={`form-control ${profile.usr_surname.length > 0 ? 'is-valid' : 'is-invalid'}`} />
               </div>
@@ -171,10 +175,7 @@ const Profile = () => {
                 <label htmlFor="">Telefono</label>
                 <input type="text" name="usr_phone" className={`form-control ${profile.usr_phone.length > 0 ? 'is-valid' : 'is-invalid'}`} value={profile.usr_phone} onChange={handleChange} />
               </div>
-              <div className="form-group">
-                <label htmlFor="">Nombre</label>
-                <input type="text" name="usr_name" value={profile.usr_name} onChange={handleChange} className={`form-control ${profile.usr_name.length > 0 ? 'is-valid' : 'is-invalid'}`} />
-              </div>
+
               <div className="form-group">
                 <label htmlFor="">DPI</label>
                 <input type="text" name="usr_dpi" value={profile.usr_dpi} onChange={handleChange} className={`form-control ${profile.usr_dpi.length > 0 ? 'is-valid' : 'is-invalid'}`} />

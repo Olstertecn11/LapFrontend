@@ -1,7 +1,4 @@
 import {
-  Box,
-  chakra,
-  SimpleGrid,
   Stat,
   StatLabel,
   StatNumber,

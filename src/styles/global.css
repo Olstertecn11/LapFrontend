@@ -3,3 +3,14 @@ thead {
   color: #408493;
   text-align: center;
 }
+
+.upload-file-box {
+  padding: 2vw;
+  border: 1px #074f6c dashed;
+  border-radius: 1vw;
+}
+
+
+.upload-file-box:hover {
+  cursor: pointer;
+}

@@ -27,6 +27,11 @@ const NewUser = ({ event, updateData }) => {
   }
 
   const saveData = async () => {
+    if (user.email.length == 0) {
+      event();
+      Notify("Operacion Denegeada", "Debe registrar un correo electrónico");
+      return;
+    }
     if (user.password !== user.password2) {
       Notify("Operacion Denegeada", "La contraeña no coincide");
       return;
@@ -37,7 +42,7 @@ const NewUser = ({ event, updateData }) => {
     console.log(response);
     EmailHelper.confirmAccount(response.newUser);
     if (response.status) {
-      Notify("Operacion Exitosa", "Evento creado correctamente", "success");
+      Notify("Operacion Exitosa", "Usuario creado correctamente, se le ha enviado un correo al nuevo usuario", "success");
       updateData();
       return;
     }

@@ -14,12 +14,16 @@ const Navbar = () => {
   const [profileImage, setProfileImage] = useState(emptyIMG);
   const btnRef = useRef()
   const history = useNavigate();
+  const [missingEffect, setMissingEffect] = useState(false);
 
 
   useEffect(() => {
     try {
-      const { img } = StoreManagment.getObject('session');
+      const { img, username } = StoreManagment.getObject('session');
       if (img) setProfileImage(img);
+      if (username.length == 0 || !img) {
+        setMissingEffect(true);
+      }
     } catch (error) {
       console.log('errorrrr');
     }
@@ -36,7 +40,10 @@ const Navbar = () => {
 
         <div className="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
           <form className="form-inline  my-2 my-lg-0 ml-auto">
-            <Link to='/Perfil' className="btn  my-2 my-sm-0" style={{ color: 'gray' }} type="button"><i className="fa-solid fa-gear"></i> </Link>
+
+            <Link to='/Perfil' className="btn  my-2 my-sm-0" style={{ color: 'gray' }} type="button"><i className="fa-solid fa-gear"></i>
+              {missingEffect && missingEffect ? <p style={{ position: 'absolute', top: '12%', right: '7%', color: '#e31b1bf5', fontSize: '1vw', fontWeight: 'bold' }} >!</p> : ''}
+            </Link>
             <button ref={btnRef} onClick={onOpen} style={{ color: 'gray' }} className="btn  ml-2 my-2 my-sm-0" type="button">
               < Image
                 borderRadius='full'
@@ -48,7 +55,7 @@ const Navbar = () => {
             </button>
           </form>
         </div>
-      </nav>
+      </nav >
       <SideDrawer isOpen={isOpen} onOpen={onOpen} onClose={onClose} btnRef={btnRef} />
     </div >
   )

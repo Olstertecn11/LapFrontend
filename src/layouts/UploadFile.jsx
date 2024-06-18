@@ -46,10 +46,10 @@ const UploadFile = ({ event, updateData }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="form-group upload-file-box">
           <input type="file" accept=".pdf" onChange={handleFileChange} />
         </div>
-        <Button type="submit" colorScheme={'green'} >Guardar</Button>
+        <Button type="submit" colorScheme={'blue'} >Guardar</Button>
       </form>
     </div>
   )

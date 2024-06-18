@@ -29,7 +29,9 @@ const GalleryImages = () => {
 
   return (
     <div>
-      <ControlBox refArr={[btnRef]} handleArr={[onOpen]} />
+      <div className="container ml-4 mt-4">
+        <ControlBox refArr={[btnRef]} handleArr={[onOpen]} />
+      </div>
       <div className="container">
         <PhotoAlbum photos={data} layout="columns" />
       </div>

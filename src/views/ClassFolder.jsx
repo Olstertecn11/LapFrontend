@@ -79,7 +79,7 @@ const ClassFolder = () => {
                 }}>
                 Archivos del docente
               </Text>
-              <Text as={'span'} color={'blue.400'} ml={'2'} fontSize={'2xl'} fontWeight={'bold'} >
+              <Text as={'span'} color={'blue.600'} ml={'2'} fontSize={'1xl'} fontWeight={'bold'} >
                 En esta sección podrá visualizar los archivos correspondientes al curso seleccionado
               </Text>
             </div>

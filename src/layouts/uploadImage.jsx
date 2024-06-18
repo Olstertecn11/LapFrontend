@@ -74,7 +74,7 @@ function UploadImage({ event, updateData }) {
         {imagePreview ? (
           <Image src={imagePreview} maxH="200px" maxW="200px" mx="auto" my="4" />
         ) : (
-          <Text fontSize="lg">Drag and drop your image here</Text>
+          <Text fontSize="lg">Arrastre y suelte su imagen aquí</Text>
         )}
       </Box>
       <Button mt={4} variant='solid' colorScheme={'green'} onClick={handleSave} >Guardar</Button>
