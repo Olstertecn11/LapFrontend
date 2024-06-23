@@ -57,6 +57,11 @@
 }
 
 
+.logn-image-column img:hover {
+  cursor: pointer;
+}
+
+
 .logn-form-column .card {
   border-radius: 0px 18px 18px 0px;
   height: 100%;

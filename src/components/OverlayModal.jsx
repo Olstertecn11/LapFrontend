@@ -43,7 +43,7 @@ const OverlayModal = ({ isOpen, onOpen, onClose, Component, title = "Previsualiz
             }
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
+            <Button background={'red.200'} color={'red.800'} onClick={onClose}>Cerrar</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

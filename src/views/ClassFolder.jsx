@@ -102,7 +102,7 @@ const ClassFolder = () => {
           }
         </div>
         <Sidebar updateData={getPDF} Component={UploadFile} onOpen={onOpenS} onClose={onCloseS} isOpen={isOpenS} title={'Subir Archivo'} btnRef={sideOpenRef} />
-        <OverlayModal title={pdfSelected ? pdfSelected.nombre : ''} onOpen={onOpen} onClose={onClose} isOpen={isOpen} Component={() => <PdfPreviewer pdf={pdfSelected} />} />
+        <OverlayModal size={'6xl'} title={pdfSelected ? pdfSelected.nombre : ''} onOpen={onOpen} onClose={onClose} isOpen={isOpen} Component={() => <PdfPreviewer pdf={pdfSelected} />} />
       </div>
     </div>
   );

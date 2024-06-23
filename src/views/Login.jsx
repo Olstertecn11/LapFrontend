@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import AuthService from './../services/auth/AuthService';
 import Swal from 'sweetalert2'
 import StoreManagment from '../helpers/StorageManagement.js';
+import { Tilt } from 'react-tilt';
 
 
 const Login = () => {
@@ -89,7 +90,9 @@ const Login = () => {
       <div className="container logn-container">
         <div className="row">
           <div className="col-md-5 logn-image-column">
-            <img src={logoLAP} alt="Logo" />
+            <Tilt options={{ reverse: false, max: 25 }}>
+              <img src={logoLAP} alt="Logo" />
+            </Tilt>
           </div>
           <div className="col-md-5 logn-form-column">
             <div className="card card-body">
