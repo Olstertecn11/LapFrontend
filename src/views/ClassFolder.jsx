@@ -21,7 +21,7 @@ const ClassFolder = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { isOpen: isOpenS, onOpen: onOpenS, onClose: onCloseS } = useDisclosure()
   const { id } = useParams();
-  const { role } = StoreManagment.getObject('session');
+  const { idUsr, role } = StoreManagment.getObject('session');
 
   const sideOpenRef = useRef();
   const searchRef = useRef();
@@ -102,7 +102,7 @@ const ClassFolder = () => {
           }
         </div>
         <Sidebar updateData={getPDF} Component={UploadFile} onOpen={onOpenS} onClose={onCloseS} isOpen={isOpenS} title={'Subir Archivo'} btnRef={sideOpenRef} />
-        <OverlayModal size={'6xl'} title={pdfSelected ? pdfSelected.nombre : ''} onOpen={onOpen} onClose={onClose} isOpen={isOpen} Component={() => <PdfPreviewer pdf={pdfSelected} />} />
+        <OverlayModal size={'6xl'} title={pdfSelected ? pdfSelected.nombre : ''} onOpen={onOpen} onClose={onClose} isOpen={isOpen} Component={() => <PdfPreviewer pdf={pdfSelected} _class={id} user={idUsr} />} />
       </div>
     </div>
   );

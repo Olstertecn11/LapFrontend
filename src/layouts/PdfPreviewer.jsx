@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -13,12 +13,16 @@ import {
   ModalCloseButton,
 } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
+import CommentsService from '../services/comments/CommentsService';
+import StoreManagment from '../helpers/StorageManagement.js';
 
-const PdfPreviewer = ({ pdf }) => {
+
+
+const PdfPreviewer = ({ pdf, _class, user }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
-
+  const { username } = StoreManagment.getObject('session');
   const arrayBufferToBase64 = (buffer) => {
     let binary = '';
     const bytes = new Uint8Array(buffer);
@@ -33,12 +37,26 @@ const PdfPreviewer = ({ pdf }) => {
     onOpen();
   };
 
-  const addComment = () => {
+  const addComment = async () => {
     if (comment.trim() !== '') {
-      setComments([...comments, comment]);
-      setComment(''); // Limpiar el campo de comentario después de agregarlo
+      const response = await CommentsService.create(comment, pdf.id, user, _class);
+      console.log(response);
+      fetchComments(); // Refetch comments after adding a new one
+      setComment('');
+    } else {
+      alert("Mensaje vacío");
     }
   };
+
+  const fetchComments = async () => {
+    const response = await CommentsService.getByClassAndPdf(_class, pdf.id);
+    setComments(response.data);
+    console.log(response);
+  };
+
+  useEffect(() => {
+    fetchComments();
+  }, []);
 
   return (
     <div>
@@ -60,7 +78,11 @@ const PdfPreviewer = ({ pdf }) => {
           <ModalCloseButton />
           <ModalBody>
             {comments.length > 0 ? (
-              comments.map((item, index) => <p key={index}>{item}</p>)
+              comments.map((item, index) => (
+                <div key={index}>
+                  <strong style={{ color: username === item.usr_name ? 'red' : 'black' }}>{item.usr_name}:</strong> {item.content}
+                </div>
+              ))
             ) : (
               <p>No hay comentarios</p>
             )}
