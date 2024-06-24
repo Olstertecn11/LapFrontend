@@ -37,6 +37,14 @@ const PdfPreviewer = ({ pdf, _class, user }) => {
     onOpen();
   };
 
+
+  const handleKey = (e) => {
+    if (e.key === 'Enter') {
+      addComment();
+    }
+
+  }
+
   const addComment = async () => {
     if (comment.trim() !== '') {
       const response = await CommentsService.create(comment, pdf.id, user, _class);
@@ -79,8 +87,14 @@ const PdfPreviewer = ({ pdf, _class, user }) => {
           <ModalBody>
             {comments.length > 0 ? (
               comments.map((item, index) => (
-                <div key={index}>
-                  <strong style={{ color: username === item.usr_name ? 'red' : 'black' }}>{item.usr_name}:</strong> {item.content}
+                <div key={index} class="d-flex flex-column mt-4">
+                  <div className="message-info">
+                    <strong style={{ color: username === item.usr_name ? 'blue' : 'black' }}>{item.usr_name}</strong>
+                    <small className="ml-2">{new Date(item.fecha).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })}</small>
+                  </div>
+                  <div className="message">
+                    {item.content}
+                  </div>
                 </div>
               ))
             ) : (
@@ -94,6 +108,7 @@ const PdfPreviewer = ({ pdf, _class, user }) => {
                 placeholder="Comentario..."
                 className="form-control"
                 value={comment}
+                onKeyDown={handleKey}
                 onChange={(e) => setComment(e.target.value)}
               />
               <Button colorScheme="blue" ml={2} onClick={addComment}>

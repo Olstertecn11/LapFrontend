@@ -14,3 +14,10 @@ thead {
 .upload-file-box:hover {
   cursor: pointer;
 }
+
+.message {
+  background: #b3aaaa8c;
+  border-radius: 0vw 2vw 2vw 2vw;
+  padding: 0.5vw;
+  color: #555151;
+}

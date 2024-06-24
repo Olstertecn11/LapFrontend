@@ -12,10 +12,12 @@ import Sidebar from "../components/Sidebar";
 import { useRef } from "react";
 import UploadFile from "../layouts/UploadFile";
 import { Text } from "@chakra-ui/react";
+import { BeatLoader } from "react-spinners";
 
 
 const ClassFolder = () => {
   const [pdfListOriginal, setPdfListOriginal] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [pdfList, setPdfList] = useState([]);
   const [pdfSelected, setPdfSelected] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -39,7 +41,8 @@ const ClassFolder = () => {
 
   const getPDF = async () => {
     const response = await FileService.getFiles();
-    const filteredResponse = role === 1 ? response : response.filter((item) => item.id_clase == id);
+    const filteredResponse = response.filter((item) => item.id_clase == id);
+    setLoading(false);
     setPdfListOriginal(filteredResponse);
     setPdfList(filteredResponse);
   }
@@ -60,6 +63,7 @@ const ClassFolder = () => {
       <div className="container mt-4">
         <div className="row">
           <div className="col-md-6">
+
             <div className="d-flex flex-column flex-nowrap align-items-start">
               <Text
                 fontWeight={'bold'}
@@ -93,6 +97,11 @@ const ClassFolder = () => {
       </div>
       <div className="container p-4">
         <div className="row">
+          {loading && loading ? (
+            <div className="contenedor mx-auto mt-4">
+              <BeatLoader color="#36d7b7" size={34} />
+            </div>
+          ) : ''}
           {
             pdfList.map((item, index) => (
               <div className="col-md-4" key={item.nombre + index}>
