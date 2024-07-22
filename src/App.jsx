@@ -11,6 +11,8 @@ import NotFound from "./views/NotFound";
 import CoursePrograms from "./views/CoursePrograms";
 import ClassFolder from "./views/ClassFolder";
 import AdminDashboard from "./views/AdminDashboard";
+import Asistencia from "./views/Asistencia";
+import AsistenciaClase from "./views/AsistenciaClase";
 import Profile from "./views/Profile";
 import Register from "./views/Register";
 import './styles/global.css';
@@ -29,6 +31,8 @@ function App() {
           <Route path="/Documentos" element={<Layout Component={CoursePrograms} />} />
           <Route path="/Clase/:id" element={<Layout Component={ClassFolder} />} />
           <Route path="/Admin/" element={<Layout Component={AdminDashboard} />} />
+          <Route path="/Asistencia/" element={<Layout Component={Asistencia} />} />
+          <Route path="/Asistencia/Clase/:id" element={<Layout Component={AsistenciaClase} />} />
           <Route path="*" element={<Layout Component={NotFound} />} />
           <Route path="/Perfil" element={<Layout Component={Profile} />} />
           <Route path="/Registro" element={<Register />} />

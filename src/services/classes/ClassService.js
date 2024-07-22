@@ -24,6 +24,17 @@ const ClassService = {
       }
     }).then(res => res.data).catch(err => console.log(err));
   },
+  getById: async (Id) => {
+    return axios.get(getApiUrl('/class/find-by-id'), {
+      params: {
+        id: Id
+      },
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer <token>"
+      }
+    }).then(res => res.data).catch(err => console.log(err));
+  },
   create: async ({ degree, subject, teacher }) => {
     return axios.post(apiUrl, { degree, subject, teacher }, {
       headers: {

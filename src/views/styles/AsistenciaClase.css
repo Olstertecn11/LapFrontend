@@ -1,0 +1,24 @@
+.asistence-table thead tr th {
+  border: 1px solid #408594;
+}
+
+.asistence-table-row td,
+.asistence-table-row th {
+  border: 1px solid #e3c9c9;
+}
+
+.divide-line {
+  background: skyblue;
+  height: 0.5vh;
+}
+
+.edit-icon:hover {
+  cursor: pointer;
+  color: #408493;
+}
+
+
+.close-icon:hover {
+  cursor: pointer;
+  color: red;
+}

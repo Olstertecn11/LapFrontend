@@ -9,7 +9,7 @@ import ControlBox from '../components/ControlsBox';
 import Sidebar from '../components/Sidebar';
 import NewClass from "../layouts/NewClass";
 
-const CoursePrograms = () => {
+const CoursePrograms = ({ route = '/Clase/' }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const history = useNavigate();
   const [originalData, setOriginalData] = useState([]);
@@ -45,7 +45,7 @@ const CoursePrograms = () => {
 
 
   const handleClick = (_id) => {
-    history(`/Clase/${_id}`);
+    history(`${route}${_id}`);
   }
 
 
