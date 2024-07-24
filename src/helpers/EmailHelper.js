@@ -12,7 +12,7 @@ const EmailHelper = {
   registerUser: (email) => {
     emailjs.send(credentials.service_id, credentials.template_id, { to_email: email, message: 'Usuario creado' }, credentials.user_id)
   },
-  confirmAccount: ({ email, username, password }) => {
+  confirmAccount: (email, username, password) => {
     emailjs.send(credentials.service_id, credentials.template_id, { to_email: email, message: `Usuario ${username} ha sido creado con este correo, utlice la contraseña: ${password} para iniciar sesión` }, credentials.user_id)
   }
 }

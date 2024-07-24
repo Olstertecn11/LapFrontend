@@ -1,6 +1,7 @@
 import './styles/register.css';
 import { useState } from 'react';
 import RegisterService from '../services/register/RegisterService';
+import EmailHelper from '../helpers/EmailHelper';
 import { Link } from 'react-router-dom';
 import Notify from '../components/Notify';
 
@@ -25,7 +26,9 @@ const Register = () => {
       alert("No match"); return;
     }
     const response = await RegisterService.register(registerForm);
+    console.log(response);
     if (response.status) {
+      EmailHelper.confirmAccount(response.data.email, response.data.username, response.data.password);
       Notify('Éxito', 'Cuenta creada correctamente', 'success');
       setRegisterForm(emptyForm);
     }
