@@ -8,6 +8,7 @@ import { Text, useDisclosure } from "@chakra-ui/react";
 import ControlBox from '../components/ControlsBox';
 import Sidebar from '../components/Sidebar';
 import NewClass from "../layouts/NewClass";
+import { BeatLoader } from "react-spinners";
 
 const CoursePrograms = ({ route = '/Clase/' }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -16,7 +17,7 @@ const CoursePrograms = ({ route = '/Clase/' }) => {
   const [data, setData] = useState([]);
   const { idUsr, role, username } = StoreManagment.getObject('session');
   const service = role === 1 ? ClassService.getAll : () => ClassService.getByTeacher(idUsr);
-
+  const [loading, setLoading] = useState(true);
 
   const handleSearch = () => {
     const textToSearch = searchRef.current.value.toLowerCase();
@@ -36,6 +37,7 @@ const CoursePrograms = ({ route = '/Clase/' }) => {
     const response = await service();
     setOriginalData(response.data);
     setData(response.data);
+    setLoading(false);
   };
 
 
@@ -57,6 +59,11 @@ const CoursePrograms = ({ route = '/Clase/' }) => {
     <div>
       <div className="container mt-4">
         <div className="row">
+          {loading && loading ? (
+            <div classname="contenedor mx-auto mt-4">
+              <beatloader color="#36d7b7" size={34} />
+            </div>
+          ) : ''}
           <div className="col-md-6">
             <div className="d-flex flex-column flex-nowrap align-items-start">
               <Text

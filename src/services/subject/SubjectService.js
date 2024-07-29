@@ -19,7 +19,7 @@ const SubjectService = {
         "Content-Type": "application/json",
         "Authorization": "Bearer <token>" // Aquí deberías incluir tu token de autorización si lo tienes
       }
-    }).then(res => res.data).catch(err => console.log(err));
+    }).then(res => res).catch(err => console.log(err));
   },
   getAll: async () => {
     return axios.get(apiUrl, {

@@ -13,12 +13,11 @@ import Swal from 'sweetalert2'
 const DeleteAnything = ({ data, Service, event, showMore = false }) => {
 
 
-
-
-  const handleClick = async (id) => {
+  const _delete = async (id) => {
     const response = await Service(id);
-    event();
+    console.log(response);
     if (response.code !== 0) {
+      event();
       Swal.fire({
         title: 'Accion exitosa',
         text: 'Elemento eliminado',
@@ -34,6 +33,23 @@ const DeleteAnything = ({ data, Service, event, showMore = false }) => {
         confirmButtonText: 'Cool'
       });
     }
+
+  }
+
+
+
+  const handleClick = async (id) => {
+    event();
+    Swal.fire({
+      title: '¿Desea elminar este elemento?',
+      text: 'El elemento será eliminado definitivamente',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        _delete(id);
+      }
+    });
   }
 
 

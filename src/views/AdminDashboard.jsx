@@ -31,6 +31,7 @@ const AdminDashboard = () => {
             title='Gestión de Maestros'
             ServiceDelete={UserService.delete}
             ServiceGet={UserService.getAll}
+            ServiceView={UserService.getAllVW}
             titleNew='Nuevo Usuario'
             ComponentNew={NewUser}
           />

@@ -8,11 +8,13 @@ import DataTable from "../components/DataTable";
 import { useEffect } from "react";
 
 
-const AdminSection = ({ margin = '2vw', title, ServiceGet, ServiceDelete, titleNew, ComponentNew }) => {
+const AdminSection = ({ margin = '2vw', title, ServiceGet, ServiceDelete, titleNew, ComponentNew, ServiceView }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
+  ServiceView = ServiceView || ServiceGet;
 
   const { data, isPending, error, updateData } = useFetch(ServiceGet, [ServiceGet]);
+
 
 
 

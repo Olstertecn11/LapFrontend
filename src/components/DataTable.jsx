@@ -1,5 +1,6 @@
 
 const DataTable = ({ data }) => {
+  console.log(data);
   return (
     <div className="table-responsive ">
       <table className="table table-striped table-bordered">
@@ -14,7 +15,7 @@ const DataTable = ({ data }) => {
           {data.map((row, index) => (
             <tr key={index}>
               {Object.values(row).map((value, i) => (
-                <td key={i}>{value}</td>
+                <td key={i} className="text-center">{value}</td>
               ))}
             </tr>
           ))}
