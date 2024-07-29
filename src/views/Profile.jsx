@@ -153,7 +153,7 @@ const Profile = () => {
                       Actualizar Perfil
                     </Button>
                     <Button variant='ghost' colorScheme='blue' onClick={handleButtonClick}>
-                      Nueva Foto <BiUpload className="ml-2" />
+                      Subir Foto <BiUpload className="ml-2" />
                     </Button>
                   </ButtonGroup>
                 </CardFooter>
