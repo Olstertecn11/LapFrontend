@@ -25,6 +25,13 @@ const FileService = {
         "Authorization": "Bearer <token>"
       }
     }).then(res => res.data).catch(err => console.log(err));
+  },
+  update: async (id, formData) => {
+    return axios.post(getApiUrl('/pdfs/update') + `&id=${id}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
   }
 }
 
