@@ -85,7 +85,7 @@ const CoursePrograms = ({ route = '/Clase/' }) => {
                 Hola {username}
               </Text>
               <Text as={'span'} color={'blue.400'} ml={'2'} fontSize={'2xl'} fontWeight={'bold'} >
-                En esta seccion podrás ver todos tus cursos
+                En esta seccion podrás ver todas tus clases
               </Text>
             </div>
           </div>
@@ -116,7 +116,7 @@ const CoursePrograms = ({ route = '/Clase/' }) => {
                 </div>
               )))
             :
-            <h2>Este profesor no tiene cursos</h2>
+            <h2>Este profesor no tiene clases</h2>
 
           }
         </div>
