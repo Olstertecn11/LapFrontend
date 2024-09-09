@@ -47,7 +47,7 @@ const AdminSection = ({ margin = '2vw', title, ServiceGet, ServiceDelete, titleN
         </div>
         <div className="row mt-4">
           <div className="col-md-12 ">
-            {data && data ? (
+            {data && data.length > 0 ? (
               <DataTable data={data} />
             ) : ''
             }
