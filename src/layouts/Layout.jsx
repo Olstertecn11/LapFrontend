@@ -1,5 +1,4 @@
 import Navbar from "./Navbar";
-import { ChakraProvider } from "@chakra-ui/react";
 import useSession from "../hooks/useSession";
 
 
@@ -12,10 +11,10 @@ const Layout = ({ Component }) => {
   const MySession = useSession();
 
   return (
-    <ChakraProvider>
+    <div>
       <Navbar />
       <Component />
-    </ChakraProvider>
+    </div>
   )
 }
 
